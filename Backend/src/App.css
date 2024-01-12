@@ -7,7 +7,7 @@
 
 body{
   background: #F3F3F8; 
-  overflow: hidden;
+  overflow: auto;
 }
 
 .App {
@@ -26,8 +26,16 @@ body{
   border-radius: 30px;
   /* box-shadow: 1px 3px 10px #e9ecef; */
   background-color: #dce7ee;
-  margin-top: 130px;
-  max-height: 470px;
+  margin-top: 200px;
+  margin-bottom: 150px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  overflow: hidden;
+  max-height: 800px;
+}
+
+.register-error{
+  margin-top: 500px;
 }
 
 .register span{
@@ -96,9 +104,9 @@ body{
   left:0px;
   right: 0px;
   font-size: 28px;
-
   
-}
+} 
+
 @media (max-width: 768px) {
   .header h1 {
     font-size: 24px;
@@ -151,6 +159,7 @@ body{
   color: red;
   font-size: 12px;
   margin-left: 85px;
+  margin-top: 20px;
 }
 
 .error-msg {
@@ -291,7 +300,7 @@ body{
 
 .flex{
   display: flex;
-  gap: 2.0em;
+  gap: 1.0em;
 }
 
 .flex-col{
@@ -567,10 +576,10 @@ footer {
   color: white;
   text-align: center;
   padding: 15px;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0px;
-  
+  margin-top: auto;
 }
 
 /* Dashboard_New_User */

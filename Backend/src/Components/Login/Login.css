@@ -1,0 +1,34 @@
+.registerLog {
+    max-width: 450px;
+    width: 100vw;
+    display: flex;
+    border: 1px solid #e9ecef;
+    border-radius: 30px;
+    background-color: #dce7ee;
+    margin: 130px; /* Center the container horizontally */
+    max-height: 470px;
+}
+
+.flex{
+    display: flex;
+    gap: 1.0em;
+  }
+  
+.col-1-log{
+    margin: auto;
+    padding: 3em 0;
+}
+
+.additional-links {
+    margin-top: 10px;
+}
+
+.additional-links a {
+    text-decoration: none;
+    color: #3498db;
+}
+
+.additional-links span {
+    margin: 0 5px;
+    color: #777;
+}

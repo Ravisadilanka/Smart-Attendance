@@ -48,7 +48,7 @@ export default function Signup() {
                 <div class="icon-fix"></div>
             </div>
         </div>)}
-      <div className={formVisible ? "register" : ''}>
+      <div className={errors.name ? 'register register-error' : 'register'}>
         {formVisible && (<form id='form' className='flex flex-col' onSubmit={handleSubmit(onSubmit)} >
           {/* Form fields and error handling */}
           {error && <div className={error === 'User created successfully' ? 'error-msg success' : 'error-msg'}>{error}</div>}

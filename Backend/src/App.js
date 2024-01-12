@@ -9,7 +9,7 @@ import Select_a_Subject from './Components/Select_a_Subject';
 import Attendance from './Components/Attendance';
 import Footer from './Components/Footer';
 import Dashboard_New_User from './Components/Dashboard_New_User';
-import Login from './Components/Login';
+import Login from './Components/Login/Login';
 
 function App() {
   return (
