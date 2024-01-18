@@ -22,43 +22,26 @@ firebase_admin.initialize_app(cred, {
 
 bucket = storage.bucket()
 
-# Set the IP address of your ESP32 camera
-esp32_camera_ip = "http://192.168.100.77"
-
-# Use Selenium to open the web page and click the "Start Stream" button
-driver = webdriver.Chrome()  # You need to have ChromeDriver installed and in your PATH
-driver.get(esp32_camera_ip)
-time.sleep(2)  # Allow time for the page to load
-
-# Find the "Start Stream" button and click it
-start_stream_button = driver.find_element(By.XPATH, "//button[text()='Start Stream']")
-start_stream_button.click()
-
-# Wait for a moment to allow the stream to start
-time.sleep(2)
-
-# VideoCapture using the IP address
-esp32_camera_url = "http://192.168.100.77"
-cap = cv2.VideoCapture(esp32_camera_url)
-
-# Set the desired frame width and height
-frame_width = 640  # replace with your desired width
-frame_height = 480  # replace with your desired height
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
+cap = cv2.VideoCapture("http://192.168.43.77:81/stream")
+cap.set(3, 640)
+cap.set(4, 480)
 
 imgBackground = cv2.imread('Resource/bg.png')
 
+# Importinq the mode images into a list
 folderModePath = 'Resource/Modes'
 modePathList = os.listdir(folderModePath)
-imgModeList = [cv2.imread(os.path.join(folderModePath, path)) for path in modePathList]
+imgModeList = []
+for path in modePathList:
+    imgModeList.append(cv2.imread(os.path.join(folderModePath,path)))
 
 # Load the encoding file
 print("Loading encode file...")
-file = open('EncodeFile.p', 'rb')
+file = open('EncodeFile.p','rb')
 encodeListKnownWithIds = pickle.load(file)
 file.close()
 encodeListKnown, studentIds = encodeListKnownWithIds
+# print(studentIds)
 print("Encode file loaded")
 
 modeType = 0
@@ -69,12 +52,7 @@ imgStudent = []
 while True:
     success, img = cap.read()
 
-    # Check if the frame is successfully captured
-    if not success:
-        print("Failed to capture frame. Exiting...")
-        break
-
-    imgS = cv2.resize(img, (0, 0), None, 0.25, 0.25)
+    imgS = cv2.resize(img, (0,0), None, 0.25, 0.25)
     imgS = cv2.cvtColor(imgS, cv2.COLOR_BGR2RGB)
 
     faceCurFrame = face_recognition.face_locations(imgS)
@@ -82,9 +60,6 @@ while True:
 
     imgBackground[150:150+480,72:72+640] = img
     imgBackground[150:150+480, 786:786 + 480] = imgModeList[modeType]
-
-    # rest of your code...
-
 
     if faceCurFrame:
         for encodeFace, faceLoc in zip(encodeCurFrame, faceCurFrame):
@@ -106,7 +81,6 @@ while True:
                 id = studentIds[matchIndex]
 
                 if counter == 0:
-                    cvzone.putTextRect(imgBackground, "Loading", (275, 400))
                     cv2.imshow("Face Attendance", imgBackground)
                     cv2.waitKey(1)
                     counter = 1
