@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
-import { auth } from '../../firebase'; // Import your Firebase configuration
+import { signIn } from '../../firebase'; // Import your Firebase configuration
 import { useNavigate, Link } from 'react-router-dom';
-import './Login.css'
+import './Login.css';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,9 +11,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const auth = getAuth();
-      const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
-      const user = userCredential.user;
+      const user = await signIn(data.email, data.password);
       console.log('User logged in successfully', user);
       // Redirect user to the dashboard or home page after successful login
       navigate('/dashboard');

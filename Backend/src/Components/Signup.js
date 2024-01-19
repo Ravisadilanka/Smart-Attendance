@@ -28,7 +28,7 @@ export default function Signup() {
       setError('User created successfully')
       setFormVisible(false);
       setTimeout(() => {
-        navigate('/Dashboard_New_User');
+        navigate('/dashboard');
       }, 2000);
     } catch (error) {
       console.log(error.message);

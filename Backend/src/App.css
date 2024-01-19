@@ -417,7 +417,6 @@ body{
   margin: auto;
   padding: 0px 20px;
   box-sizing: border-box;
-
 }
 section{
   min-height: 100vh;
@@ -592,4 +591,44 @@ footer {
   cursor: pointer;
   font-size: 16px;
   margin-bottom: 100px;
+}
+
+.sidebar {
+  height: 450px;
+  width: 220px;
+  background-color: #6F7B9A;
+  position: absolute;
+  top: 99px;
+  left: 0;
+  overflow-y: auto; 
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .sidebar ul li span.icon {
+    margin-right: 30px;
+  }
+
+  a:hover {
+    background-color: #2C3268;
+  }
+
+  .active a {
+    background-color: #2C3268;
+  }
 }
