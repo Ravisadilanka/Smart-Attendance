@@ -1,0 +1,17 @@
+/* Footer.css */
+
+footer {
+  background-color: #2c3268;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  bottom: 0%;
+}   
+
+@media (max-width: 600px) {
+  footer {
+    position: static; 
+  }
+}

@@ -1,17 +1,17 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import Header from '../components/Header'
 import img1 from '../images/profile.jpg'
-import Sidebar from '../components/Sidebar'
+
 export default function() {
   return (
 
     <section className='editprof'>
     <Header/>
     <Sidebar/>
-    <Sidebar/>
-    <Footer/>
+    
+    
    
     <div className="register2">
     
@@ -21,11 +21,31 @@ export default function() {
         <img src={img1} height={100} width={100}  />
         <form id='form' className='flex flex-col'>
           
-          <label>Name </label> <input type='text'  required className='placeholder'/>
+          <div id='input-item'>
+
+          <label>Name </label> 
+          <input type='text'  required className='placeholder'/>
+          </div>
+
+          <div id='input-item'>
           <label>Email </label> <input type='text'  required className='placeholder'/>
+          </div>
+          <div id='input-item'>
+
           <label>Student ID </label> <input type='text'  required className='placeholder'/>
+          </div>
+          <div id='input-item'>
+
           <label>NIC </label> <input type='text'  required className='placeholder'/>
+          </div>
+          <div id='input-item'>
+
           <label>Contact Number </label> <input type='text'  required className='placeholder'/>
+          </div>
+          
+         
+          
+          
           
           
           <button className='btn'>Save</button>

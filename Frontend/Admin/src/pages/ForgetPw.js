@@ -1,15 +1,16 @@
 
 import React from 'react'
+import '../../src/ForgetPw.css';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 export default function () {
   return (
     <section className='forgetpw'>
       <Header/>
       <Sidebar/>
-      <Footer/>
+      {/* <Footer/> */}
       <div className="register">
         <div className="col-1">
           <h1>Forget Password</h1>

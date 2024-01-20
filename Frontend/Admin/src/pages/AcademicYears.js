@@ -2,7 +2,7 @@ import React from 'react'
 
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 export default function 
 () {
@@ -12,7 +12,7 @@ export default function
 
     <Header/>
     <Sidebar/>
-    <Footer/>
+    {/* <Footer/> */}
     <div className='academic-btn-section'>
        <button className='academic-btn'>17/18 YEAR</button>
        <button className='academic-btn'>18/19 YEAR</button>
