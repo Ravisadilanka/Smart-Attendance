@@ -1,5 +1,6 @@
 import {useState} from "react";
 import { VscError } from "react-icons/vsc";
+import './Dashboard.css';
 
 export default function Dashboard(){
     const [cards] = useState([
