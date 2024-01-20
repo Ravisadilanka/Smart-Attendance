@@ -6,8 +6,7 @@
 }
 
 body{
-  background: #F3F3F8; 
-  overflow: auto;
+  background: #F3F3F8;
 }
 
 .App {
@@ -398,7 +397,6 @@ body{
 }
 .card {
   flex: 0 0 calc(28% - 20px);
-  max-width: calc(33.33% - 20px);
   width: 100%;
   background: #e6e9ed;
   border-radius: 10px;
@@ -416,7 +414,8 @@ body{
   width: 100%;
   margin: auto;
   padding: 0px 20px;
-  box-sizing: border-box;
+  height: 400px; /* Set the desired height for your scrollable container */
+  overflow-y: auto; 
 }
 section{
   min-height: 100vh;
