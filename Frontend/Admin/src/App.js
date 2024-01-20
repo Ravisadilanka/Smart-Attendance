@@ -11,6 +11,8 @@ import Home from './pages/Home'
 import './App.css';
 import SelectSubject from './pages/SelectSubject'
 
+import Footer from './components/Footer'
+
 
   function App() {
     return (
@@ -31,6 +33,8 @@ import SelectSubject from './pages/SelectSubject'
           </Routes>
         
         </BrowserRouter>
+
+        { <Footer/> }
         
         
       </div>

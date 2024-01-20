@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 export default function 
 () {
@@ -9,7 +9,7 @@ export default function
     <section>
       <Header/>
       <Sidebar/>
-      <Footer/>
+      {/* <Footer/> */}
       <div className='row-1'>
        <div className='col-2'>
 

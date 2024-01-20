@@ -1,7 +1,8 @@
 import React from 'react'
+import '../../src/DeleteMembers.css';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 import { FaTrash } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 
@@ -17,7 +18,7 @@ export default function() {
 
     <Header/>
     <Sidebar/>
-    <Footer/>
+    {/* <Footer/> */}
     <div className='table-wrapper'>
 
       <table className='table'>
