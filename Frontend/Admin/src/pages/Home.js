@@ -17,7 +17,8 @@ export default function() {
       <Link to = "/Subjects"> Subjects </Link><br></br>
       <Link to = "/AcademicYears"> Academic Years </Link><br></br>
       <Link to = "/SelectSubject"> Select Your Subject </Link><br></br>
-      <Link to = "/StudentAttendence">Student Attendence </Link>
+      <Link to = "/StudentAttendence">Student Attendence </Link><br></br>
+      <Link to = "/UserProfile">UserProfile</Link><br></br>
 
 
     </div>
