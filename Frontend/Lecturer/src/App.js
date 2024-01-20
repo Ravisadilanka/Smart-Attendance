@@ -4,6 +4,7 @@ import View_attendance from './Components/View_attendance/View_attendance';
 import SignUp from './Components/SignUp/SignUp';
 import Header from './Components/Header/Header';
 import SideMenu from './Components/SideMenu/Sidemenu'
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
         <Route exact path='/' element={<SignUp/>}/>
         <Route path='/View_attendance' element={<View_attendance/>}/>
+        <Route path='/Dashboard' element={<Dashboard/>}/>
         </Routes>
       </div>
     </Router>
