@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
 
 const app = initializeApp({
     apiKey: "AIzaSyBgPtFGlCpMvX592vF1O03EerD7ibI6bi4",
@@ -12,5 +13,27 @@ const app = initializeApp({
     measurementId: "G-RWMLE401VN"
 });
 
-export const auth = getAuth(app);
-export default app;
+const auth = getAuth();
+
+const signIn = async (email, password) => {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+};
+
+const signOut = async () => {
+    // Implement sign-out logic here...
+};
+
+const getCurrentUser = () => {
+    return new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            resolve(user);
+            unsubscribe();
+        });
+    });
+};
+
+const db = getDatabase(app);
+
+
+export { auth, signIn, signOut, getCurrentUser, db };
