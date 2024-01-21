@@ -390,8 +390,8 @@ body{
 
 
 /*Dashboard */
-.cards{
-  display: flex;
+/* .cards{ */
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -415,7 +415,7 @@ body{
   margin: auto;
   padding: 0px 20px;
   height: 400px; /* Set the desired height for your scrollable container */
-  overflow-y: auto; 
+  /* overflow-y: auto; 
 }
 section{
   min-height: 100vh;
@@ -440,7 +440,7 @@ section{
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-}
+} */ */
 
 
 /*Select_a_Subject */
