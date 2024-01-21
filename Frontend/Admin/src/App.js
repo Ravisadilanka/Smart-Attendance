@@ -7,6 +7,7 @@ import AcademicYears from './pages/AcademicYears'
 import Subjects from './pages/Subjects'
 import StudentAttendence from './pages/StudentAttendence'
 import UserProfile from './pages/UserProfile'
+import EditStaff from './pages/EditStaff'
 
 import Home from './pages/Home'
 import './App.css';
@@ -29,7 +30,7 @@ import Footer from './components/Footer'
             <Route path="/SelectSubject" element={<SelectSubject />} /> 
             <Route path="/StudentAttendence" element={<StudentAttendence />} />
             <Route path="/UserProfile" element={<UserProfile />} />
-
+            <Route path="/EditStaff" element={<EditStaff />} />
 
 
             <Route path="/Home" element={<Home />} />

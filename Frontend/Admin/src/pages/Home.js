@@ -18,7 +18,8 @@ export default function() {
       <Link to = "/AcademicYears"> Academic Years </Link><br></br>
       <Link to = "/SelectSubject"> Select Your Subject </Link><br></br>
       <Link to = "/StudentAttendence">Student Attendence </Link><br></br>
-      <Link to = "/UserProfile">UserProfile</Link><br></br>
+      <Link to = "/UserProfile">User Profile</Link><br></br>
+      <Link to = "/EditStaff">Edit Staff</Link><br></br>
 
 
     </div>

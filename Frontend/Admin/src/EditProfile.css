@@ -31,7 +31,9 @@
   min-width: 150px;
 }
 
-#form >  input, .btn{
+
+
+ #form >  input, .btn{
   border: 1px solid #e9ecef;
   padding: .9em 1em;
 }
@@ -47,6 +49,8 @@
   cursor: pointer;
   border-radius: 20px ;
   transition: background-color 0.3s;
+  width: 50%;
+  
  
   
-  }
+  } 
