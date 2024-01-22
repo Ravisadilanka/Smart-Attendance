@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes , Route} from 'react-router-dom'
+// import { useForm } from 'react-hook-form';
 import ForgetPw from './pages/ForgetPw'
 import EditProfile from './pages/EditProfile'
 import DeleteMembers from './pages/DeleteMembers'
@@ -8,12 +9,17 @@ import Subjects from './pages/Subjects'
 import StudentAttendence from './pages/StudentAttendence'
 import UserProfile from './pages/UserProfile'
 import EditStaff from './pages/EditStaff'
+import EditStudent from './pages/EditStudent'
+import SignUp from './pages/SignUp'
+import Test from './pages/Test'
+
 
 import Home from './pages/Home'
 import './App.css';
 import SelectSubject from './pages/SelectSubject'
 
 import Footer from './components/Footer'
+import Dashboard from './pages/DashBoard'
 
 
   function App() {
@@ -31,7 +37,10 @@ import Footer from './components/Footer'
             <Route path="/StudentAttendence" element={<StudentAttendence />} />
             <Route path="/UserProfile" element={<UserProfile />} />
             <Route path="/EditStaff" element={<EditStaff />} />
-
+            <Route path="/EditStudent" element={<EditStudent />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/test" element={<Test />} />
+            <Route path="/DashBoard" element={<Dashboard />} />
 
             <Route path="/Home" element={<Home />} />
 

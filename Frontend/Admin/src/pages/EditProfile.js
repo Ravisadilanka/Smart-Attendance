@@ -20,7 +20,7 @@ export default function() {
       <h1>Edit Profile</h1>
 
         <img src={img1} height={100} width={100}  />
-        <form id='form' className='flex flex-col'>
+        <form id='form' className='flex flex-col editprof-form'>
           
           <div id='input-item'>
 

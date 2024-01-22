@@ -49,7 +49,7 @@ export default function() {
           
           
           
-          <button className='userprof-btn'>Edit</button>
+          <button className='editstaff-btn'>Save</button>
           
         </form>
         

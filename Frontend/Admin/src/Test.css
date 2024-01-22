@@ -1,27 +1,43 @@
-.register2 {
-  min-width: 400px;
+.test{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* min-width: 300px;
+  background-color: #2C326817;
+  border-radius: 12px; */
+   gap: 12px;
+  /* padding: 36px; */
+}
+.user-prof {
+  min-width: 350px;
   background-color: #2C326817;
   border-radius: 12px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 48px 0px 48px;
+  margin-top: 60px;
+} 
 
-.col-1 {
+/* .col-1 {
  display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
  padding: 18px 32px 0px 32px;
  margin-top: 60px;
-}
+} */
 
 
-.col-1 input {
+.test input {
  border-radius: 12px;
  padding: 6px 8px;
  border: none;
  width: 100%;
 }
 
-.col-1 input:focus {
+.test input:focus {
  outline: none;
 }
 
@@ -39,7 +55,7 @@
   outline: none;
 }
 
-#form > .editstaff-btn{
+#form > .userprof-btn{
   background-color: #2C3268;
   color: #e9ecef;
   font-size: 1em;
@@ -52,11 +68,15 @@
  
   
   }
-.form{
+.test{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.user-prof img {
+  border-radius: 50%;
+ }
 
 #input-item{
   width:100%
