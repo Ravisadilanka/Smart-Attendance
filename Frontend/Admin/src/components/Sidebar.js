@@ -23,11 +23,11 @@ const Sidebar = () => {
             <span><MdOutlineDashboard /></span> {' '} Dashboard</Link>
         </li>
 
-        <li className={activeLink === 'notifications' ? 'active' : ''}>
+        {/* <li className={activeLink === 'notifications' ? 'active' : ''}>
           <Link to="/notifications" onClick={() => handleLinkClick('notifications')}><span><IoIosNotifications /></span>Notifications</Link>
-        </li>
+        </li> */}
         <li className={activeLink === 'profile' ? 'active' : ''}>
-          <Link to="/profile" onClick={() => handleLinkClick('profile')}><span><CgProfile /></span>User Profile </Link>
+          <Link to="/UserProfile" onClick={() => handleLinkClick('profile')}><span><CgProfile /></span>User Profile </Link>
         </li>
         <li>
           <Link to="/logout" onClick={() => handleLinkClick('logout')}><span><IoIosLogOut /></span>Logout </Link>

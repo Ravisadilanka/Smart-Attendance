@@ -1,0 +1,17 @@
+.row-1{
+  height: ;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.col-2{
+  display: flex;
+  flex-direction: column;
+  background: #BBCEDB30;
+  padding: 10px 30px;
+  margin: 25px;
+  border: 1px solid #000000;
+  border-radius: 12px;
+}

@@ -25,6 +25,7 @@ export default function AddSubject() {
           subjectID: data.subjectID,
           subjectName: data.subjectName,
           Year: data.Year,
+          userId: user.uid,
         };
         console.log('DB Object:', db);
         const subjectsRef = ref(db, 'subjects');

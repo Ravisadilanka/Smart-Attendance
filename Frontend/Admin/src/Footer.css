@@ -10,8 +10,8 @@ footer {
   bottom: 0%;
 }   
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   footer {
-    position: static; 
+    /* position: static;  */
   }
 }

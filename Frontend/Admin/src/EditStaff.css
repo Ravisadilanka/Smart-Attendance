@@ -1,0 +1,63 @@
+.register2 {
+  min-width: 400px;
+  background-color: #2C326817;
+  border-radius: 12px;
+}
+
+.col-1 {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 18px 32px 0px 32px;
+ margin-top: 60px;
+}
+
+
+.col-1 input {
+ border-radius: 12px;
+ padding: 6px 8px;
+ border: none;
+ width: 100%;
+}
+
+.col-1 input:focus {
+ outline: none;
+}
+
+/* .col-1 label {
+ min-width: 150px;
+} */
+
+#form >  input{
+  border: 1px solid #e9ecef;
+  
+  padding: .6em .6em;
+}
+
+#form > input:focus{
+  outline: none;
+}
+
+#form > .editstaff-btn{
+  background-color: #2C3268;
+  color: #e9ecef;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 20px ;
+  transition: background-color 0.3s;
+  width: 60%;
+  border: 1px solid #e9ecef;
+  padding: .6em .6em;
+ 
+  
+  }
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#input-item{
+  width:100%
+}

@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import Signup from './Components/Signup';
 import Add_Subject from './Components/Add_Subject';
 import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
-import Dashboard from './Components/Dashboard';
+import Dashboard from './Components/Dashboard/Dashboard';
 import Select_a_Subject from './Components/Select_a_Subject';
 import Attendance from './Components/Attendance';
 import Footer from './Components/Footer';

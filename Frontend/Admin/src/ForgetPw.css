@@ -1,7 +1,7 @@
 .register .col-1{
-  max-width: 60%;
-  width: 60%; 
-  padding: 20px 60px 0px 60px ;
+  
+  width: 70%; 
+  padding: 20px 60px 0px 60px ; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,4 +27,10 @@
 
 .flex-col{
   flex-direction: column;
+}
+
+.forgetpw{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }

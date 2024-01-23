@@ -34,9 +34,8 @@ body{
  
 
 
-.register2{
+/* .register2{
   max-width: 500px;
-  width: 500px;
   display:flex;
   border: 1px solid #66696c;
   border-radius: 20px;  
@@ -44,30 +43,31 @@ body{
   margin-top: 50%;
   
  
-}
+} */
 
-.placeholder{
+/* .text-area{
   border-radius: 20px;
   width: 80%;
   height: 120%;
   border: none;
-}
-label{
+} */
+
+/* label{
 
   width: 100%;
-}
+} */
 
 .register span{
   color: #041b33;
 }
 
-.register2 span{
+/* .register2 span{
   color: #041b33;
 }
 
 .register2 img{
   border-radius: 50%; 
-}
+} */
 
 #form{
   max-width: 100%;
@@ -76,7 +76,7 @@ label{
   
 }
 
-#form >  input, .btn{
+/* #form >  input, .btn{
   border: 1px solid #e9ecef;
   padding: .9em 1em;
 }
@@ -94,7 +94,7 @@ label{
   transition: background-color 0.3s;
  
   
-  }
+  } */
 
 .flex{
   display: flex;
@@ -107,8 +107,8 @@ label{
 
 
 
-.register2 .col-1{
-   padding: 20px 60px 10px 60px ;
+/* .register2 .col-1{
+   padding: 20px 40px 10px 60px ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,7 +116,7 @@ label{
   gap: 0px;
   
  
-}
+} */
 
 .register .col-2 img{
   width: 480px;
@@ -304,22 +304,22 @@ label{
   
 
 }
-.row-1{
+/* .row-1{
   height: ;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
-}
+} */
 
-.col-2{
+/* .col-2{
   display: flex;
   flex-direction: column;
   background: #BBCEDB30;
   padding: 10px 30px;
   margin: 25px;
   border: 1px solid #000000;
-}
+} */
 .Subject-subject{
   padding: 10px 45px;
   margin: 30px;

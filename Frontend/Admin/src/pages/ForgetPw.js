@@ -15,7 +15,7 @@ export default function () {
         <div className="col-1">
           <h1>Forget Password</h1>
  
-          <form id='form' className='flex flex-col'>
+          <form id='form' className='flex flex-col forgetpw'>
             
             <input type='text' placeholder='Registration Number' required/>
             <input type='text' placeholder='Email Address' required/>
