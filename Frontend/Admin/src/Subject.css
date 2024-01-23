@@ -1,0 +1,27 @@
+.Subject-btn{
+  
+  padding-inline: 20px;
+   
+   background-color:#dce7ee;
+   color: #000000;
+   font-size: 1.4em;
+   cursor: pointer;
+   border-radius: 20px ;
+   transition: background-color 0.3s;
+   padding: 20px ; 
+   width: 250px;
+   height: 120px;
+ }
+ 
+ .subject-section{
+   display: flex;
+   gap: 50px;
+   
+   flex-wrap: wrap;
+   padding-inline: 10rem;
+   gap: 5rem;
+   margin-left: 250px
+ 
+   
+ 
+ }

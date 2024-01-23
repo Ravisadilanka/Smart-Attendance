@@ -1,6 +1,9 @@
 import React from 'react'
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+
+
+import '../../src/Subject.css';
 // import Footer from '../components/Footer';
 
 export default function 
@@ -15,7 +18,12 @@ export default function
 
 
 <div className='subject-section'>
+ 
+ <div>
    <button className='Subject-btn'>Digital Innovation</button>
+   <img class="corner-image" src=".jpg" alt="Corner Image"></img>
+  
+</div>
    <button className='Subject-btn'>E-Business</button>
    <button className='Subject-btn'>Data Structures & Algorithms</button>
    <button className='Subject-btn'>IS Risk Mangement</button>

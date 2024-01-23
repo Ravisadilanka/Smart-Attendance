@@ -30,7 +30,7 @@ const Sidebar = () => {
           <Link to="/UserProfile" onClick={() => handleLinkClick('profile')}><span><CgProfile /></span>User Profile </Link>
         </li>
         <li>
-          <Link to="/logout" onClick={() => handleLinkClick('logout')}><span><IoIosLogOut /></span>Logout </Link>
+          <Link to="/Login" onClick={() => handleLinkClick('logout')}><span><IoIosLogOut /></span>Logout </Link>
         </li>
       </ul>
     </div>

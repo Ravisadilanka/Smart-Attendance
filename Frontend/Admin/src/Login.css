@@ -1,0 +1,49 @@
+.col-1-log{
+  margin-top: -20px;
+  padding: 3em 0;
+
+}
+
+.additional-links {
+  margin-top: 10px;
+}
+
+.additional-links a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+.additional-links span {
+  margin: 0 5px;
+  color: #777;
+}
+
+.image {
+  max-width: 100%;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-left: 0px;
+  border-radius: 12px;
+}
+
+.login-container{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8%;
+}
+
+
+.login-text{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+
+
+.login-text input{
+  width: 120%; 
+}

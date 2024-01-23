@@ -12,6 +12,7 @@ import EditStaff from './pages/EditStaff'
 import EditStudent from './pages/EditStudent'
 import SignUp from './pages/SignUp'
 import Test from './pages/Test'
+import Login from './pages/Login'
 
 
 import Home from './pages/Home'
@@ -41,6 +42,7 @@ import Dashboard from './pages/DashBoard'
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/test" element={<Test />} />
             <Route path="/DashBoard" element={<Dashboard />} />
+            <Route path="/Login" element={<Login />} />
 
             <Route path="/Home" element={<Home />} />
 
