@@ -24,10 +24,10 @@ const Sidemenu = () => {
           <Link to="/notifications" onClick={() => handleLinkClick('notifications')}><span><IoIosNotifications /></span>Notifications</Link>
         </li>
         <li className={activeLink === 'profile' ? 'active' : ''}>
-          <Link to="/profile" onClick={() => handleLinkClick('profile')}><span><CgProfile /></span>User Profile </Link>
+          <Link to="/User_Profile" onClick={() => handleLinkClick('profile')}><span><CgProfile /></span>User Profile </Link>
         </li>
         <li>
-          <Link to="/logout" onClick={() => handleLinkClick('logout')}><span><IoIosLogOut /></span>Logout </Link>
+          <Link to="/Login" onClick={() => handleLinkClick('login')}><span><IoIosLogOut /></span>Logout </Link>
         </li>
       </ul>
     </div>
