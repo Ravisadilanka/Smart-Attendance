@@ -141,7 +141,7 @@ export default function Dashboard() {
     return (
         
         <div>
-            <div><Sidemenu /></div>
+            <div className='sidemenu'><Sidemenu /></div>
             <section>
                 <div className="containe">
                     <div className="cards">

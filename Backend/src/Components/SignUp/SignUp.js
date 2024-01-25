@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
-import { auth } from '../firebase'; // Import your Firebase configuration
+import { auth } from '../../firebase'; // Import your Firebase configuration
 import { useNavigate } from 'react-router-dom';
 import { getDatabase, ref, set } from "firebase/database";
+import './SignUp.css'
 
 export default function Signup() {
   const { register, handleSubmit, formState: { errors }, getValues } = useForm();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Sidemenu.css';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MdOutlineDashboard } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";

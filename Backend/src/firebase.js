@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth';
+// import { confirmPasswordReset as firebaseConfirmPasswordReset } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
 
 const app = initializeApp({
@@ -33,7 +34,15 @@ const getCurrentUser = () => {
     });
 };
 
+const resetPassword = async (email) => {
+    await sendPasswordResetEmail(auth, email);
+};
+
+// const confirmPasswordReset = async (oobCode, newPassword) => {
+//     await firebaseConfirmPasswordReset(auth, oobCode, newPassword);
+// };
+
 const db = getDatabase(app);
 
 
-export { auth, signIn, signOut, getCurrentUser, db };
+export { auth, signIn, signOut, getCurrentUser, resetPassword, db };

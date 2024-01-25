@@ -50,7 +50,7 @@ export default function Login() {
         {error && <div className='error-msg'>{error}</div>}
 
         <div className="additional-links">
-          <Link to="/forgot-password">Forgot Password?</Link>
+          <Link to="/forgot_password">Forgot Password?</Link>
           <span> | </span>
           <Link to="/signup">Sign Up</Link>
         </div>
