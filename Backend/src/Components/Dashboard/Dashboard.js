@@ -4,6 +4,7 @@ import { db, auth } from '../../firebase'; // Import your firebase configuration
 import { ref, onValue, remove, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import Sidemenu from '../SideMenu/Sidemenu'
 
 export default function Dashboard() {
     const [subjects, setSubjects] = useState([]);
@@ -82,8 +83,6 @@ export default function Dashboard() {
 
                     // Update local storage to reflect the changes
                     localStorage.setItem('subjects', JSON.stringify(subjectsData));
-                } else {
-                    console.log('No data available.');
                 }
             });
         } catch (error) {
@@ -129,9 +128,7 @@ export default function Dashboard() {
 
                         // Update local storage with the latest subjects
                         localStorage.setItem('subjects', JSON.stringify(subjectsData));
-                    } else {
-                        console.log('No data available.');
-                    }
+                    } 
                 });
             } catch (error) {
                 console.error('Error fetching subjects:', error);
@@ -142,7 +139,9 @@ export default function Dashboard() {
     }, []); // The empty dependency array ensures that this effect runs only once on component mount
 
     return (
+        
         <div>
+            <div><Sidemenu /></div>
             <section>
                 <div className="containe">
                     <div className="cards">
