@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { VscError } from 'react-icons/vsc';
-import { db, auth } from '../../firebase'; // Import your firebase configuration
+import { db, auth } from '../../firebase';
 import { ref, onValue, remove, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
-import Sidemenu from '../SideMenu/Sidemenu'
+import Sidemenu from '../SideMenu/Sidemenu';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 export default function Dashboard() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [subjects, setSubjects] = useState([]);
+    const [subjectToDelete, setSubjectToDelete] = useState(null); // New state
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -41,7 +44,7 @@ export default function Dashboard() {
         }
     };
 
-    const handleDelete = async (subjectID) => {
+    const handleDeleteSubject = async (subjectID) => {
         const user = auth.currentUser;
 
         if (!user || !user.uid) {
@@ -79,7 +82,9 @@ export default function Dashboard() {
                     });
 
                     // Remove the subject from the local state based on the subjectId
-                    setSubjects((prevSubjects) => prevSubjects.filter((subject) => subject.subjectID !== subjectID));
+                    setSubjects((prevSubjects) =>
+                        prevSubjects.filter((subject) => subject.subjectID !== subjectID)
+                    );
 
                     // Update local storage to reflect the changes
                     localStorage.setItem('subjects', JSON.stringify(subjectsData));
@@ -88,6 +93,26 @@ export default function Dashboard() {
         } catch (error) {
             console.error('Error deleting subject:', error);
         }
+    };
+
+    const handleConfirmDelete = (subjectID) => {
+        setSubjectToDelete(subjectID);
+        setIsModalOpen(true);
+    };
+
+    const confirmDelete = () => {
+        if (subjectToDelete) {
+            // Call your delete function here
+            handleDeleteSubject(subjectToDelete);
+            // Reset subjectToDelete state
+            setSubjectToDelete(null);
+        }
+        setIsModalOpen(false); // Close the modal
+    };
+
+    const handleCloseModal = () => {
+        setSubjectToDelete(null);
+        setIsModalOpen(false);
     };
 
     useEffect(() => {
@@ -100,7 +125,8 @@ export default function Dashboard() {
         }
 
         // Check local storage for cached subjects
-        const cachedSubjects = JSON.parse(localStorage.getItem('subjects')) || [];
+        const cachedSubjects =
+            JSON.parse(localStorage.getItem('subjects')) || [];
         setSubjects(cachedSubjects);
 
         // Reference to the 'subjects' node in the database
@@ -128,7 +154,7 @@ export default function Dashboard() {
 
                         // Update local storage with the latest subjects
                         localStorage.setItem('subjects', JSON.stringify(subjectsData));
-                    } 
+                    }
                 });
             } catch (error) {
                 console.error('Error fetching subjects:', error);
@@ -139,31 +165,37 @@ export default function Dashboard() {
     }, []); // The empty dependency array ensures that this effect runs only once on component mount
 
     return (
-        
         <div>
-            <div className='sidemenu'><Sidemenu /></div>
+            <div className='sidemenu'>
+                <Sidemenu />
+            </div>
             <section>
-                <div className="containe">
-                    <div className="cards">
+                <div className='containe'>
+                    <div className='cards'>
                         {subjects.map((subject, i) => (
-                            <div key={i} className="card">
+                            <div key={i} className='card'>
                                 <h2>{subject.subjectID}</h2>
                                 <h3>{subject.subjectName}</h3>
                                 <h5>{subject.Year}</h5>
                                 <h5>{subject.subjectRef}</h5>
-                                <span className="icon-container">
-                                    <VscError onClick={() => { handleDelete(subject.subjectID); getSubjectKeys(); }} />
+                                <span className='icon-container'>
+                                    <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
                                 </span>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
-            <div className="button-container">
-                <button className="bottom-button" onClick={handleClick}>
+            <div className='button-container'>
+                <button className='bottom-button' onClick={handleClick}>
                     Add more Subjects
                 </button>
             </div>
+            <ConfirmationModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                onConfirm={confirmDelete}
+            />
         </div>
     );
 }
