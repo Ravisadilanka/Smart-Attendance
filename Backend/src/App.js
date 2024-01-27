@@ -22,10 +22,10 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/Add_Lecture' element={<AddLecture />} />
+          <Route path={`/Add_Lecture/:subjectID`} element={<AddLecture />} />
           <Route path='/Add_Subject' element={<AddSubject />} />
           <Route path='/Dashboard' element={<Dashboard />} />
-          <Route path='/Select_a_Subject' element={<SelectSubject />} />
+          <Route path={`/Select_a_Subject/:subjectID`} element={<SelectSubject />} />
           <Route path='/Attendance' element={<Attendance />} />
           <Route path='/Dashboard_New_User' element={<DashboardNewUser />} />
           <Route path='/forgot_password' element={<ForgotPassword />} />

@@ -17,6 +17,16 @@ export default function Dashboard() {
         navigate('/Add_Subject');
     };
 
+    const handleCardClick = (event, subjectID) => {
+
+        // Prevent the event from propagating to the parent container
+        event.stopPropagation();
+
+        // Redirect to the Add_Lecture route with the selected subjectID
+        navigate(`/Select_a_Subject/${subjectID}`);
+    
+    };
+
     const getSubjectKeys = async () => {
         const user = auth.currentUser;
 
@@ -170,22 +180,24 @@ export default function Dashboard() {
                 <Sidemenu />
             </div>
             <section>
-                <div className='containe'>
-                    <div className='cards'>
-                        {subjects.map((subject, i) => (
-                            <div key={i} className='card'>
-                                <h2>{subject.subjectID}</h2>
-                                <h3>{subject.subjectName}</h3>
-                                <h5>{subject.Year}</h5>
-                                <h5>{subject.subjectRef}</h5>
-                                <span className='icon-container'>
-                                    <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
-                                </span>
-                            </div>
-                        ))}
+    <div className='containe'>
+        <div className='cards'>
+            {subjects.map((subject, i) => (
+                <div key={i} className='card'>
+                    <div onClick={(e) => handleCardClick(e, subject.subjectID)}>
+                        <h2>{subject.subjectID}</h2>
+                        <h3>{subject.subjectName}</h3>
+                        <h5>{subject.Year}</h5>
+                        <h5>{subject.subjectRef}</h5>
+                    </div>
+                    <div className='icon-container'>
+                        <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
                     </div>
                 </div>
-            </section>
+            ))}
+        </div>
+    </div>
+</section>
             <div className='button-container'>
                 <button className='bottom-button' onClick={handleClick}>
                     Add more Subjects
