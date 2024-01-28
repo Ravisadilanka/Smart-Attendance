@@ -12,14 +12,15 @@ export default function Select_a_Subject() {
   const [lectureToDelete, setLectureToDelete] = useState(null);
   const navigate = useNavigate();
 
-  const handleButtonClick = (lectureIndex) => {
-    console.log(`Button clicked on Lecture ${lectureIndex + 1}`);
-  };
+
 
   const handleClick = () => {
     navigate(`/Add_Lecture/${subjectID}`);
   };
-
+  const handleCardClick = (lectureNumber) => {
+    navigate(`/Attendance/${lectureNumber}`);
+  };
+  
   const handleDeleteLecture = async (lectureID) => {
     const user = auth.currentUser;
 
@@ -126,7 +127,7 @@ export default function Select_a_Subject() {
           <div className="cards">
             {lectures.map((lecture, i) => (
               <div key={i} className="card1">
-                <div className="card-button1">
+                <div className="card-button1" onClick={() => handleCardClick(lecture.lectureNumber)}>
                   <span>Lecture Number: {lecture.lectureNumber}</span>
                   {/* Add more details based on your data structure */}
                 </div>
@@ -134,6 +135,7 @@ export default function Select_a_Subject() {
                   <VscError onClick={() => handleConfirmDelete(lecture.lectureID)} />
                 </span>
               </div>
+
             ))}
           </div>
         </div>

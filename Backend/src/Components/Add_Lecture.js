@@ -24,7 +24,8 @@ export default function Add_Lecture() {
           const newLecture = {
               lectureNumber: data.lecnumber,
               date: data.Date,
-              time: data.Time,
+              startingTime: data.StartTime,
+              endingTime: data.EndTime,
               numberOfStudents: data.number,
               venue: data.Venue,
               userId: user.uid,
@@ -75,11 +76,19 @@ export default function Add_Lecture() {
             {errors.Date && <span className="error-row" style={{ color: 'red' }}>{errors.Date.message}</span>}
 
             <div className='form-row'>
-              <label htmlFor="time">Time</label>
+              <label htmlFor="time">Starting Time</label>
               {/* Use input type="time" for a standardized time input */}
               <input
                 type="time"
-                {...register('Time', { required: 'Time is required' })}
+                {...register('StartTime', { required: 'Time is required' })}
+              />
+            </div>
+            <div className='form-row'>
+              <label htmlFor="time">Ending Time</label>
+              {/* Use input type="time" for a standardized time input */}
+              <input
+                type="time"
+                {...register('EndTime', { required: 'Time is required' })}
               />
             </div>
             {errors.Time && <span className="error-row" style={{ color: 'red' }}>{errors.Time.message}</span>}
