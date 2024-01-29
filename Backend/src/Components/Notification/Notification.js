@@ -39,6 +39,13 @@ const Notification = () => {
         };
 
         fetchUpcomingLectures();
+
+        const intervalId = setInterval(() => {
+            fetchUpcomingLectures();
+        }, 0.1 * 60 * 1000);
+
+        // Clean up the interval on component unmount
+        return () => clearInterval(intervalId);
     }, []);
 
     return (
