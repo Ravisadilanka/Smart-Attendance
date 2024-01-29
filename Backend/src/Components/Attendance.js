@@ -3,13 +3,15 @@ import { VscCheck, VscClose } from 'react-icons/vsc';
 import { db } from '../firebase'; // Import the db instance
 import { ref, onValue } from 'firebase/database';
 import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
+import { CSVLink } from 'react-csv';
+import Sidemenu from '../Components/SideMenu/Sidemenu';
 
 const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
     const [studentsData, setStudentsData] = useState([]);
-    const [lecturesData, setLecturesData] = useState([]);
     const { lectureNumber } = useParams(); // Get the lecture number from the URL
     const [startingTime, setStartingTime] = useState(null);
     const [endingTime, setEndingTime] = useState(null);
+    const [date, setDate] = useState(null);
 
 
     useEffect(() => {
@@ -44,6 +46,7 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             console.log('Ending Time:', specificLectureData.endingTime);
                             setStartingTime(specificLectureData.startingTime);
                             setEndingTime(specificLectureData.endingTime);
+                            setDate(specificLectureData.date)
                         } else {
                             console.log(`Lecture ${lectureNumber} not found.`);
                         }
@@ -60,10 +63,30 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
         fetchData();
     }, [lectureNumber]);
 
+    const csvData = studentsData.map(student => ({
+        Name: student.name,
+        'Registration Number': student.id,
+        'Last Attendance Time': student.Last_attendance_time,
+        'Attendance Status': student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
+            student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
+            student.Last_attendance_time.split(' ')[0] === date ? 'Present' : 'Absent',
+    }));
 
+    const csvHeaders = [
+        { label: 'Name', key: 'Name' },
+        { label: 'Registration Number', key: 'Registration Number' },
+        { label: 'Last Attendance Time', key: 'Last Attendance Time' },
+        { label: 'Attendance Status', key: 'Attendance Status' },
+    ];
 
     return (
         <div className='table-wrapper'>
+            <Sidemenu />
+            <div style={{ marginBottom: '10px' }}>
+                <CSVLink data={csvData} headers={csvHeaders} filename={`Attendance_Lecture_${lectureNumber}.csv`}>
+                    Download CSV
+                </CSVLink>
+            </div>
             <table className='table'>
                 <thead className='expand'>
                     <tr>
@@ -80,7 +103,7 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             <td>{student.id}</td>
                             <td>{student.Last_attendance_time}</td>
                             <td>
-                                {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime && student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime ? (
+                                {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime && student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime && student.Last_attendance_time.split(' ')[0] === date ? (
                                     <VscCheck color="green" />
                                 ) : (
                                     <VscClose color="red" />

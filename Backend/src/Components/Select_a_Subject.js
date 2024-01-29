@@ -4,6 +4,7 @@ import { db, auth } from '../firebase';
 import { ref, onValue, remove } from 'firebase/database';
 import ConfirmationModal from '../Components/ConfirmationModal/ConfirmationModal';
 import { useNavigate, useParams } from 'react-router-dom';
+import Sidemenu from './SideMenu/Sidemenu';
 
 export default function Select_a_Subject() {
   const { subjectID } = useParams();
@@ -122,6 +123,7 @@ export default function Select_a_Subject() {
 
   return (
     <div>
+      <Sidemenu />
       <section>
         <div className="container">
           <div className="cards">

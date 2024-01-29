@@ -4,6 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { ref, push, set } from 'firebase/database';
+import Sidemenu from './SideMenu/Sidemenu';
 
 export default function Add_Lecture() {
     const { subjectID } = useParams(); // Get the subjectID from the URL parameters
@@ -51,6 +52,7 @@ export default function Add_Lecture() {
 
   return (
     <div>
+      <Sidemenu />
       <section>
         <div className="register2">
           <form id='form' className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
