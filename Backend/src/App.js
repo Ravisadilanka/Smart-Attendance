@@ -12,6 +12,8 @@ import DashboardNewUser from './Components/Dashboard_New_User';
 import Login from './Components/Login/Login';
 import ForgotPassword from './Components/Forget_Password/Forget_Password';
 import Notification from './Components/Notification/Notification';
+import EditStaff from './Components/EditProfile/EditStaff';
+import UserProfile from './Components/Profile/UserProfile';
 // import ResetPassword from './Components/Reset_Password/ResetPassword';
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path='/Dashboard_New_User' element={<DashboardNewUser />} />
           <Route path='/forgot_password' element={<ForgotPassword />} />
           <Route path='/notifications' element={<Notification />} />
+          <Route path='/edit_profile' element={<EditStaff />} />
+          <Route path='/Profile' element={<UserProfile />} />
           {/* <Route path='/reset_password/:oobCode' element={<ResetPassword />} /> */}
         </Routes>
       </div>
