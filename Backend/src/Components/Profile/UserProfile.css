@@ -64,3 +64,20 @@
 #input-item{
   width:100%
 }
+.success-message {
+  color: #155724;  /* Bootstrap success color */
+  background-color: #d4edda;  /* Bootstrap success background color */
+  border-color: #c3e6cb;  /* Bootstrap success border color */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: #721c24;  /* Bootstrap error color */
+  background-color: #f8d7da;  /* Bootstrap error background color */
+  border-color: #f5c6cb;  /* Bootstrap error border color */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
