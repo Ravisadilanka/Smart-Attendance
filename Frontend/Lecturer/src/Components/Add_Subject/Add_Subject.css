@@ -1,0 +1,10 @@
+.register3 {
+    max-width: 550px;
+    width: 100vw;
+    display:flex;
+    border: 1px solid #e9ecef;
+    border-radius: 30px;
+    background-color: #dce7ee;
+    margin-top: 150px;
+     
+  }
