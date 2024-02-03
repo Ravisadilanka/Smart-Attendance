@@ -4,6 +4,7 @@ import { auth, db } from '../../firebase';
 import { ref, get, update } from 'firebase/database';
 
 import './UserProfile.css';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function UserProfile() {
   const [userData, setUserData] = useState({
@@ -20,26 +21,33 @@ export default function UserProfile() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
-        const currentUser = auth.currentUser;
+        try {
+            const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    const userRef = ref(db, `users/${user.uid}`);
 
-        if (currentUser) {
-          const userRef = ref(db, `users/${currentUser.uid}`);
+                    const snapshot = await get(userRef);
+                    const userDataFromFirebase = snapshot.val();
 
-          const snapshot = await get(userRef);
-          const userDataFromFirebase = snapshot.val();
+                    setUserData(userDataFromFirebase || {});
+                } else {
+                    console.error('No authenticated user');
+                    // Handle accordingly, redirect to login or show a message
+                }
+            });
 
-          setUserData(userDataFromFirebase || {});
-        } else {
-          console.error('No authenticated user');
+            return () => {
+                // Clean up the subscription on component unmount
+                unsubscribeAuth();
+            };
+        } catch (error) {
+            console.error('Error fetching user data:', error.message);
         }
-      } catch (error) {
-        console.error('Error fetching user data:', error.message);
-      }
     };
 
     fetchUserData();
-  }, []);
+}, []);
+
 
   const handleChange = (e) => {
     const { id, value } = e.target;

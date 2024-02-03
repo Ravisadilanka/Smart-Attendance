@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import Sidemenu from '../SideMenu/Sidemenu';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Dashboard() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Dashboard() {
 
         // Redirect to the Add_Lecture route with the selected subjectID
         navigate(`/Select_a_Subject/${subjectID}`);
-    
+
     };
 
     const getSubjectKeys = async () => {
@@ -126,53 +127,42 @@ export default function Dashboard() {
     };
 
     useEffect(() => {
-        const user = auth.currentUser;
-
-        if (!user || !user.uid) {
-            // No user is logged in, handle this case accordingly
-            console.log('No user is logged in.');
-            return;
-        }
-
-        // Check local storage for cached subjects
-        const cachedSubjects =
-            JSON.parse(localStorage.getItem('subjects')) || [];
-        setSubjects(cachedSubjects);
-
-        // Reference to the 'subjects' node in the database
-        const subjectsRef = ref(db, 'subjects');
-
-        // Fetch data from the real-time database for the specific user
         const fetchData = async () => {
             try {
-                // Use onValue to listen for changes in the data
-                onValue(subjectsRef, (snapshot) => {
-                    const subjectsData = [];
+                const unsubscribe = onAuthStateChanged(auth, (user) => {
+                    if (!user) {
+                        console.log('User is not logged in.');
+                        navigate('/l');
+                    } else {
+                        const subjectsRef = ref(db, 'subjects');
 
-                    // Check if data exists before processing
-                    if (snapshot.exists()) {
-                        snapshot.forEach((childSnapshot) => {
-                            const subject = childSnapshot.val();
+                        onValue(subjectsRef, (snapshot) => {
+                            const subjectsData = [];
 
-                            // Check if the subject belongs to the logged-in user
-                            if (user.uid === subject.userId) {
-                                subjectsData.push(subject);
+                            if (snapshot.exists()) {
+                                snapshot.forEach((childSnapshot) => {
+                                    const subject = childSnapshot.val();
+
+                                    if (user.uid === subject.userId) {
+                                        subjectsData.push(subject);
+                                    }
+                                });
+
+                                setSubjects(subjectsData);
+                                localStorage.setItem('subjects', JSON.stringify(subjectsData));
                             }
                         });
-
-                        setSubjects(subjectsData);
-
-                        // Update local storage with the latest subjects
-                        localStorage.setItem('subjects', JSON.stringify(subjectsData));
                     }
                 });
+
+                return () => unsubscribe();
             } catch (error) {
                 console.error('Error fetching subjects:', error);
             }
         };
 
         fetchData();
-    }, []); // The empty dependency array ensures that this effect runs only once on component mount
+    }, [navigate]); // The empty dependency array ensures that this effect runs only once on component mount
 
     return (
         <div>
@@ -180,24 +170,24 @@ export default function Dashboard() {
                 <Sidemenu />
             </div>
             <section>
-    <div className='containe'>
-        <div className='cards'>
-            {subjects.map((subject, i) => (
-                <div key={i} className='card'>
-                    <div onClick={(e) => handleCardClick(e, subject.subjectID)}>
-                        <h2>{subject.subjectID}</h2>
-                        <h3>{subject.subjectName}</h3>
-                        <h5>{subject.Year}</h5>
-                        <h5>{subject.subjectRef}</h5>
-                    </div>
-                    <div className='icon-container'>
-                        <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
+                <div className='containe'>
+                    <div className='cards'>
+                        {subjects.map((subject, i) => (
+                            <div key={i} className='card'>
+                                <div onClick={(e) => handleCardClick(e, subject.subjectID)}>
+                                    <h2>{subject.subjectID}</h2>
+                                    <h3>{subject.subjectName}</h3>
+                                    <h5>{subject.Year}</h5>
+                                    <h5>{subject.subjectRef}</h5>
+                                </div>
+                                <div className='icon-container'>
+                                    <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
-            ))}
-        </div>
-    </div>
-</section>
+            </section>
             <div className='button-container'>
                 <button className='bottom-button' onClick={handleClick}>
                     Add more Subjects

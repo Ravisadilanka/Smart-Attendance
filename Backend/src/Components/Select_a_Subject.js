@@ -5,6 +5,7 @@ import { ref, onValue, remove } from 'firebase/database';
 import ConfirmationModal from '../Components/ConfirmationModal/ConfirmationModal';
 import { useNavigate, useParams } from 'react-router-dom';
 import Sidemenu from './SideMenu/Sidemenu';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Select_a_Subject() {
   const { subjectID } = useParams();
@@ -81,45 +82,51 @@ export default function Select_a_Subject() {
   };
 
   useEffect(() => {
-    const user = auth.currentUser;
-
-    if (!user || !user.uid) {
-      // No user is logged in, handle this case accordingly
-      console.log('No user is logged in.');
-      return;
-    }
-
-    // Reference to the 'lectures' node in the database
-    const lecturesRef = ref(db, 'lectures');
-
-    // Fetch data from the real-time database for the specific user
     const fetchData = async () => {
-      try {
-        // Use onValue to listen for changes in the data
-        onValue(lecturesRef, (snapshot) => {
-          const lecturesData = [];
+        try {
+            const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    console.log('No user is logged in.');
+                    // Handle accordingly, redirect to login or show a message
+                    // You may want to set lecturesData to an empty array here
+                    return;
+                }
 
-          // Check if data exists before processing
-          if (snapshot.exists()) {
-            snapshot.forEach((childSnapshot) => {
-              const lecture = childSnapshot.val();
+                // Reference to the 'lectures' node in the database
+                const lecturesRef = ref(db, 'lectures');
 
-              // Check if the lecture belongs to the logged-in user and the specific subject
-              if (user.uid === lecture.userId && lecture.subjectId === subjectID) {
-                lecturesData.push(lecture);
-              }
+                // Use onValue to listen for changes in the data
+                onValue(lecturesRef, (snapshot) => {
+                    const lecturesData = [];
+
+                    // Check if data exists before processing
+                    if (snapshot.exists()) {
+                        snapshot.forEach((childSnapshot) => {
+                            const lecture = childSnapshot.val();
+
+                            // Check if the lecture belongs to the logged-in user and the specific subject
+                            if (user.uid === lecture.userId && lecture.subjectId === subjectID) {
+                                lecturesData.push(lecture);
+                            }
+                        });
+
+                        setLectures(lecturesData);
+                    }
+                });
             });
 
-            setLectures(lecturesData);
-          }
-        });
-      } catch (error) {
-        console.error('Error fetching lectures:', error);
-      }
+            return () => {
+                // Clean up the subscription on component unmount
+                unsubscribeAuth();
+            };
+        } catch (error) {
+            console.error('Error fetching lectures:', error);
+        }
     };
 
     fetchData();
-  }, [subjectID]);
+}, [subjectID]);
+
 
   return (
     <div>
