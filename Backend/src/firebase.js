@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth';
-// import { confirmPasswordReset as firebaseConfirmPasswordReset } from 'firebase/auth';
+import { confirmPasswordReset as firebaseConfirmPasswordReset } from 'firebase/auth';
 import { getDatabase } from 'firebase/database';
+
 
 const app = initializeApp({
     apiKey: "AIzaSyBgPtFGlCpMvX592vF1O03EerD7ibI6bi4",
@@ -38,11 +39,17 @@ const resetPassword = async (email) => {
     await sendPasswordResetEmail(auth, email);
 };
 
-// const confirmPasswordReset = async (oobCode, newPassword) => {
-//     await firebaseConfirmPasswordReset(auth, oobCode, newPassword);
-// };
+const confirmPasswordReset = async (oobCode, newPassword) => {
+    try {
+        // Implement confirmPasswordReset logic here...
+        await firebaseConfirmPasswordReset(auth, oobCode, newPassword);
+    } catch (error) {
+        console.error('Confirm password reset error:', error);
+        throw error; // Re-throw the error or handle it as needed
+    }
+};
 
 const db = getDatabase(app);
 
 
-export { auth, signIn, signOut, getCurrentUser, resetPassword, db };
+export { auth, signIn, signOut, getCurrentUser, resetPassword, confirmPasswordReset, db };

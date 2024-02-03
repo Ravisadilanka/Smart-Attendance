@@ -13,7 +13,7 @@ import Login from './Components/Login/Login';
 import ForgotPassword from './Components/Forget_Password/Forget_Password';
 import Notification from './Components/Notification/Notification';
 import UserProfile from './Components/Profile/UserProfile';
-// import ResetPassword from './Components/Reset_Password/ResetPassword';
+import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
           <Route path='/forgot_password' element={<ForgotPassword />} />
           <Route path='/notifications' element={<Notification />} />
           <Route path='/Profile' element={<UserProfile />} />
+          <Route path="/reset_password/:oobCode?" element={<ResetPassword />} />
           {/* <Route path='/reset_password/:oobCode' element={<ResetPassword />} /> */}
         </Routes>
       </div>

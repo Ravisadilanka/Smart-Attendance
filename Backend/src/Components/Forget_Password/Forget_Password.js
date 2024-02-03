@@ -14,7 +14,9 @@ export default function ForgetPassword() {
       await resetPassword(email);
       setSuccessMessage('Password reset email sent successfully. Check your email inbox.');
       setErrorMessage('');
-      navigate('/')
+      setTimeout(() => {
+        navigate('/');
+      }, 10000);
     } catch (error) {
       setErrorMessage('Error sending password reset email. Please check your email address.');
       setSuccessMessage('');
