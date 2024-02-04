@@ -1,4 +1,4 @@
-.sidebar{
+/*.sidebar{
     height:480px;
     width:220px;
     background-color: #6F7B9A;
@@ -35,4 +35,58 @@
     .active a {
       background-color: #2C3268 ;
     }
+}
+*/
+.smart {
+  font-family: fantasy;
+  font-size: 40px;
+  font-weight: 10px;
+  color: #ecf0f1;
+  margin-top: 15px;
+
+}
+
+.sidebar{
+  height:600px;
+  width:220px;
+  background-color: RGB(30, 46, 73);
+  position: absolute;
+  top: 0px;
+  left: 0;
+  
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+  
+  li {
+    margin-bottom: 0px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .sidebar ul li span.icon {
+    margin-right: 30px; 
+  }
+  
+  a:hover {
+    background-color: #2C3268;
+  }
+  
+  .active a {
+    background-color: #151833;
+  }
+}
+
+
+.assign{
+  margin-left: -32px;
+  margin-bottom: 30px;
 }

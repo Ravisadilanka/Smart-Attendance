@@ -1,0 +1,53 @@
+.error{
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-row label {
+    flex-basis: 150px; 
+    margin-left: 0px;;
+  }
+  
+  .form-row input {
+    flex: 5;
+    border-radius: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center; 
+    padding-inline: 20px;
+  
+  }
+  
+  .register2 {
+    max-width: 550px;
+    width: 100vw;
+    display:flex;
+    border: 1px solid #e9ecef;
+    border-radius: 30px;
+    background-color: #dce7ee;
+    margin-top: 120px;
+     
+  }
+  
+  .error-row {
+    color: red;
+    font-size: 12px;
+    margin-left: 85px;
+  }
+
+  
+.flex{
+    display: flex;
+    gap: 1em;
+  }
+  
+  .flex-col{
+    flex-direction: column;
+  }
+  

@@ -7,7 +7,7 @@
     flex: 0 0 calc(30% - 20px);
     max-width: calc(30% - 20px);
     width: 100%;
-    background: #e6e9ed;
+    background: RGB(50, 66, 93);
     border-radius: 10px;
     padding: 15px 10px;
     margin-bottom: 25px;
@@ -15,10 +15,14 @@
     border: 2px solid transparent;
     font: 5px;
     position:relative;
+    color: aliceblue;
+    box-shadow: 0 4px 8px rgba(218, 17, 17, 0.1);
   }
   
   .card:hover{
     border-color: #2C3268;
+    transform: translateY(-5px); /* Add a slight lift on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   .containe{
     max-width: calc(100% - 220px);

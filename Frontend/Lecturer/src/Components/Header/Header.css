@@ -1,12 +1,12 @@
 .header {
-    background-color: #2C3268;
+    background-color: RGB(45, 61, 88);
     padding: 8px;
     text-align: center;
     color: white;
     max-width: 3000px;
     position:absolute;
     top: 0px;
-    left:0px;
+    left:215px;
     right: 0px;
     font-size: 20px;
   }

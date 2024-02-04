@@ -1,6 +1,7 @@
 import {useState} from "react";
 import { VscError } from "react-icons/vsc";
 import './Dashboard.css';
+import Sidemenu from '../SideMenu/Sidemenu';
 
 export default function Dashboard(){
     const [cards] = useState([
@@ -25,6 +26,7 @@ export default function Dashboard(){
     ])
     return (
             <div>
+                <Sidemenu/>
             <section>
                 <div className="containe">
                     <div className="cards" >

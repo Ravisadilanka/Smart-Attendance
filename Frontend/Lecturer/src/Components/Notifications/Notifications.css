@@ -1,0 +1,123 @@
+.notification-01 {
+    background-color: #d6daf9ba;
+    margin-top: 20px;;
+    border: 2px #66696c solid;
+    border-radius: 19px;
+    padding: 5px;
+    margin-left: 200px;
+  
+  }
+  
+  .not-01 {
+    border-bottom: 1px solid #032a54;
+    margin: 4px;
+    padding-right:180px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    
+    font-size: larger ;
+  }
+  
+  .not-01 p {
+    font-family: Tahoma;
+    font-size: 0.9em ;
+    color: #66696c;
+  }
+  
+  .butn{
+    background-color: #2c3268;
+    color: #F3F3F8;
+    margin-left: 70px;
+    margin-top: -20px;
+    border-radius: 90px;
+    cursor: pointer;
+    padding: 13px 20px;
+    font-size: 17px;
+    text-align: center;
+    border: 1px solid #3498db;
+    border-radius: 24px;
+    float: left;
+  }
+  
+  .butn1{
+    background-color: #2c3268;
+    color: #F3F3F8;
+    margin-left: -50px;
+    border-radius: 90px;
+    cursor: pointer;
+    padding: 11px 40px;
+    font-size: 17px;
+    text-align: center;
+    border: 1px solid #3498db;
+    border-radius: 24px;
+    margin-right: 70px;
+  }
+  
+  .butn2{
+    background-color: #2c3268;
+    color: #F3F3F8;
+    margin-left: 70px;
+    border-radius: 90px;
+    cursor: pointer;
+    padding: 11px 22px;
+    font-size: 17px;
+    text-align: center;
+    border: 1px solid #3498db;
+    border-radius: 24px;
+    margin-top: 0px;
+    margin-left: px;
+  }
+  
+  .butn3{
+    background-color: #2c3268;
+    color: #F3F3F8;
+    margin-left: 90px;
+    border-radius: 90px;
+    cursor: pointer;
+    padding: 11px 32px;
+    font-size: 17px;
+    text-align: center;
+    border: 1px solid #3498db;
+    border-radius: 24px;
+  }
+  
+  .empty-notification{
+    border: 1px black solid;
+    padding: 170px 200px;
+    font-size: 27px;
+    font-weight:300;
+    color: #66696c;
+    background-color: #d6daf9ba;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 19px;
+  }
+
+  .button-container {
+    position:absolute;
+    bottom: 50px;
+    left: 45%;
+    transform: translateX(-50%);
+    margin-bottom: 0px; 
+
+  }
+  
+  .bottom-button {
+    padding: 10px 20px;
+    background-color:  #2C3268;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 250px;
+  }
+
+  .notification-02 {
+    background-color: #d6daf9ba;
+    margin-top: 150px;;
+    border: 2px #66696c solid;
+    border-radius: 19px;
+    padding: 5px;
+    margin-left: 200px;
+  }
