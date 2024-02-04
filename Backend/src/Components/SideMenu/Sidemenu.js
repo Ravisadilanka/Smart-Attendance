@@ -8,10 +8,12 @@ import { IoIosLogOut } from "react-icons/io";
 import { auth, db } from '../../firebase'; 
 import { useNavigate } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Sidemenu = () => {
   const [activeLink, setActiveLink] = useState('dashboard');
   const [upcomingLecturesCount, setUpcomingLecturesCount] = useState(0);
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
 
   const handleLinkClick = (link) => {
@@ -29,8 +31,29 @@ const Sidemenu = () => {
   };
 
   useEffect(() => {
+
+    const fetchUserData = async () => {
+      const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          try {
+            const userRef = ref(db, `users/${user.uid}`);
+            const snapshot = await get(userRef);
+            const userDataFromFirebase = snapshot.val();
+            setUserData(userDataFromFirebase || {});
+          } catch (error) {
+            console.error('Error fetching user data:', error);
+          }
+        }
+      });
+  
+      return () => unsubscribeAuth();
+    };
+  
+    fetchUserData();
+
     const fetchUpcomingLecturesCount = async () => {
       try {
+        
         const currentTime = new Date();
         const halfAnHourLater = new Date(currentTime.getTime() + 30 * 60 * 1000);
     
@@ -47,6 +70,7 @@ const Sidemenu = () => {
         });
     
         setUpcomingLecturesCount(upcomingLectures.length);
+
       } catch (error) {
         console.error('Error fetching upcoming lectures count:', error);
       }
@@ -60,6 +84,8 @@ const Sidemenu = () => {
 
   // Clean up the interval on component unmount
   return () => clearInterval(intervalId);
+
+  
     
   }, []);
 
@@ -67,7 +93,7 @@ const Sidemenu = () => {
     <div className='sidebar'>
       <ul>
         <li className={activeLink === 'dashboard' ? 'active' : ''}>
-          <Link to="/dashboard" onClick={() => handleLinkClick('dashboard')}>
+          <Link to={userData.adminId ? "/admin_dashboard" : "/dashboard"} onClick={() => handleLinkClick('dashboard')}>
             <span><MdOutlineDashboard /></span> {' '} Dashboard</Link>
         </li>
         <li className={activeLink === 'notifications' ? 'active' : ''}>

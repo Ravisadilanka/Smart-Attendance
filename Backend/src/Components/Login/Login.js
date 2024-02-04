@@ -17,7 +17,6 @@ export default function Login() {
       const user = await signIn(data.email, data.password);
       console.log('User logged in successfully', user);
       // Redirect user to the dashboard or home page after successful login
-      userData.adminId ?  navigate('/admin_dashboard') : navigate('/dashboard');
     } catch (error) {
       console.error(error);
       setError('Failed to log in. Please check your credentials.');
@@ -30,14 +29,16 @@ export default function Login() {
             const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     const userRef = ref(db, `users/${user.uid}`);
-
                     const snapshot = await get(userRef);
                     const userDataFromFirebase = snapshot.val();
-
+                    
                     setUserData(userDataFromFirebase || {});
-
+                    
                     // Log adminId to console
-                    // console.log('Admin ID:', userDataFromFirebase.adminId);
+                    console.log('Admin ID:', userDataFromFirebase.adminId);
+                    
+                    // Redirect user based on adminId after data is fetched
+                    userDataFromFirebase.adminId ? navigate('/admin_dashboard') : navigate('/dashboard');
                 } else {
                     console.error('No authenticated user');
                     // Handle accordingly, redirect to login or show a message
