@@ -1,0 +1,13 @@
+.header {
+    background-color: #1c203f;
+    padding: 25px;
+    text-align: center;
+    color: white;
+    max-width: 3000px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    font-size: 28px;
+  }
+  
