@@ -1,25 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { signIn } from '../../firebase'; // Import your Firebase configuration
+import { auth, db, signIn } from '../../firebase'; // Import your Firebase configuration
 import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
+import { onAuthStateChanged } from 'firebase/auth';
+import { get, ref } from 'firebase/database';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [userData, setUserData] = useState({})
 
   const onSubmit = async (data) => {
     try {
       const user = await signIn(data.email, data.password);
       console.log('User logged in successfully', user);
       // Redirect user to the dashboard or home page after successful login
-      navigate('/dashboard');
+      userData.adminId ?  navigate('/admin_dashboard') : navigate('/dashboard');
     } catch (error) {
       console.error(error);
       setError('Failed to log in. Please check your credentials.');
     }
   };
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+        try {
+            const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    const userRef = ref(db, `users/${user.uid}`);
+
+                    const snapshot = await get(userRef);
+                    const userDataFromFirebase = snapshot.val();
+
+                    setUserData(userDataFromFirebase || {});
+
+                    // Log adminId to console
+                    // console.log('Admin ID:', userDataFromFirebase.adminId);
+                } else {
+                    console.error('No authenticated user');
+                    // Handle accordingly, redirect to login or show a message
+                }
+            });
+
+            // Don't forget to unsubscribe when the component unmounts
+            return () => unsubscribeAuth();
+        } catch (error) {
+            console.error('Error fetching user data:', error.message);
+        }
+    };
+
+    // Call the fetchUserData function
+    fetchUserData();
+}, []);
+
 
   return (
     <div className='registerLog'>
