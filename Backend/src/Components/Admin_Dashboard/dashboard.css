@@ -1,0 +1,18 @@
+.dashboard-btn{
+  background-color: #2C3268;
+  color: #e9ecef;
+  font-size: 1.4em;
+  cursor: pointer;
+  border-radius: 10px ;
+  transition: background-color 0.3s;
+  padding: 18px 24px 18px 24px ;
+}
+
+
+.dashboard-btn-section{
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
