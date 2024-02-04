@@ -1,0 +1,90 @@
+.table-wrapper {
+    width: 80%;
+    /* Set your desired width */
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.table-scroll {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.table-scroll table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table-scroll th,
+.table-scroll td {
+    padding: 8px;
+    text-align: left;
+}
+
+.table-scroll th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+}
+
+/* .edit-button and .delete-button CSS */
+.edit-button,
+.delete-button {
+    background-color: transparent;
+    color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-button {
+    color: #dc3545;
+}
+.table-scroll th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    /* Set your desired background color */
+}
+
+.edit-button,
+.delete-button {
+    background-color: transparent;
+    /* Set the background color to transparent */
+    color: #007bff;
+    /* Set the text color for Edit button */
+    border: none;
+    /* Remove the border */
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-button {
+    color: #dc3545;
+    /* Set the text color for Delete button */
+}
+.edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.blur-effect {
+    filter: blur(5px); /* Adjust the blur strength as needed */
+}
+
+/* Add a class to the table-scroll div when the modal is open */
+.table-scroll.modal-open {
+    filter: blur(5px); /* Apply the same blur effect as the modal */
+    pointer-events: none; /* Allow clicking through the blurred area */
+}

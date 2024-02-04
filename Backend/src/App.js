@@ -15,6 +15,7 @@ import Notification from './Components/Notification/Notification';
 import UserProfile from './Components/Profile/UserProfile';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 import AdminDashboard from './Components/Admin_Dashboard/DashBoard';
+import ViewStaff from './Components/ViewStaff/ViewStaff';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='/Profile' element={<UserProfile />} />
           <Route path="/reset_password/:oobCode?" element={<ResetPassword />} />
           <Route path="admin_dashboard" element={<AdminDashboard />} />
+          <Route path="view_staffdetails" element={<ViewStaff />} />
           {/* <Route path='/reset_password/:oobCode' element={<ResetPassword />} /> */}
         </Routes>
       </div>
