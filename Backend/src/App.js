@@ -18,6 +18,7 @@ import AdminDashboard from './Components/Admin_Dashboard/DashBoard';
 import ViewStaff from './Components/ViewStaff/ViewStaff';
 import AccademicYears from './Components/AccedemicYears/AcademicYears';
 import ViewStudents from './Components/ViewStudents/ViewStudents';
+import StudentDashboard from './Components/Student_Dashboard/StudentDashboard';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
           <Route path="/view_staffdetails" element={<ViewStaff />} />
           <Route path="/academic_years" element={<AccademicYears />} />
           <Route path="/academic_years/:academicYear" element={<ViewStudents />} />
-          {/* <Route path='/reset_password/:oobCode' element={<ResetPassword />} /> */}
+          <Route path="/student_dashboard" element={<StudentDashboard />} />
         </Routes>
       </div>
     </Router>
