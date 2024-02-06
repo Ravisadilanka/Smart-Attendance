@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* > * {
+  font-family: "Poppins", cursive;
+  margin: 0;
+  }
+
+body{
+  background: #ddddf9;    
+}
+
+.App {
+  height: 130vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.register{
+  max-width: 500px;
+  width: 100vw;
+  display:flex;
+  border: 1px solid #66696c;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.register span{
+  color: #041b33;
+}
+
+#form{
+  max-width: 320px;
+  width: 100vw;
+  margin: 3em auto;
+}
+
+#form >  input, .btn{
+  border: 1px solid #e9ecef;
+  padding: .9em 1em;
+}
+
+#form > input:focus{
+  outline: none;
+}
+
+#form > .btn{
+  background-color: #2c3268;
+  color: #e9ecef;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+
+.flex{
+  display: flex;
+  gap: 2.0em;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.register .col-1{
+  margin: auto;
+  padding: 3em 0;
+}
+
+.register .col-2 img{
+  width: 480px;
+  height: 100%;
+  object-fit: cover;
+  align-self: flex-end;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: none;
+}
+
+@media screen and (min-width: 860px)  {
+  .register .col-2 img{
+    display: initial;
+  }
+}
+
+
+.header {
+  background-color: #1c203f;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  max-width: 3000px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  font-size: 28px;
+}
+
+/* CSS File for Notifiction bar */
+
+.notification-01 {
+  background-color: #d6daf9ba;
+  margin-top: 20px;;
+  border: 2px #66696c solid;
+  border-radius: 19px;
+  padding: 20px;
+
+}
+
+.not-01 {
+  border-bottom: 1px solid #032a54;
+  margin: 4px;
+  padding-right:180px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  
+  font-size: larger ;
+}
+
+.not-01 p {
+  font-family: Tahoma;
+  font-size: 0.9em ;
+  color: #66696c;
+}
+
+.butn{
+  background-color: #2c3268;
+  color: #F3F3F8;
+  margin-left: 70px;
+  margin-top: -20px;
+  border-radius: 90px;
+  cursor: pointer;
+  padding: 13px 20px;
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid #3498db;
+  border-radius: 24px;
+  float: left;
+}
+
+.butn1{
+  background-color: #2c3268;
+  color: #F3F3F8;
+  margin-left: -50px;
+  border-radius: 90px;
+  cursor: pointer;
+  padding: 11px 40px;
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid #3498db;
+  border-radius: 24px;
+  margin-right: 70px;
+}
+
+.butn2{
+  background-color: #2c3268;
+  color: #F3F3F8;
+  margin-left: 70px;
+  border-radius: 90px;
+  cursor: pointer;
+  padding: 11px 22px;
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid #3498db;
+  border-radius: 24px;
+  margin-top: 0px;
+  margin-left: 6px;
+}
+
+.butn3{
+  background-color: #2c3268;
+  color: #F3F3F8;
+  margin-left: 90px;
+  border-radius: 90px;
+  cursor: pointer;
+  padding: 11px 32px;
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid #3498db;
+  border-radius: 24px;
+}
+
+.empty-notification{
+  border: 1px black solid;
+  padding: 210px 220px;
+  font-size: 27px;
+  font-weight:300;
+  color: #66696c;
+  background-color: #d6daf9ba;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 19px;
+}
+
+/* CSS File for Dashboard */
+
+.container_dashboard{
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  padding: 0 20px;
+  padding-left: ;
+  box-sizing: border-box;
+}
+
+
+.container_dashboard h1{
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: -300px;
+}
+
+.sect1234{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.cards-1234{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.card-1234{
+  flex: 0 0 calc(28% -  20px);
+  max-width: calc(33.33% - 20px);
+  width: 100%;
+  background: #e6e9ed;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 25px;
+  transition: .3s;
+  border: 2px solid transparent;
+  
+}
+
+.card-1234:hover{
+  border-color: #1d39c4;
+}
+
+.button-abcd {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 60px;
+  padding: 10px 20px;
+  background-color: #2c3268;
+  color:white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+/* CSS File for footer Component */
+
+footer {
+  background-color: #1c203f;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+/* CSS file for Selecting subject */
+
+.selsubx{
+  
+  background-color: #324c661c;
+  border: 1.5px black solid;
+  border-radius: 15px;
+  margin-right: 150px;
+  margin-top: -150px;
+  padding-left: 90px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+  padding-top: 60px;
+  
+}
+
+.selsuby{
+  background-color: #324c6613;
+  border: 1.5px black solid;
+  border-radius: 15px;
+  margin-right: 100px;
+  margin-top: -150px;
+  padding-left: 90px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+  padding-top: 60px;
+
+}
+
+.selsub01{
+  background-color: #141948b9;
+  border: 2px black solid;
+  border-radius: 20px;
+  padding:8px 50px;
+  padding-bottom: 4px;
+  margin-right: 30px;
+  margin-bottom: 60px;
+  width: 75px;
+  height: 35px;
+
+}
+
+.selsub01 p{
+  font-weight: 550;
+  
+}
+
+/* CSS File for SignUp & Forget password*/
+
+
+.newpage{
+  max-width: 500px;
+  width: 100vw;
+  display:flex;
+  border: 1px solid #66696c;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: -70px;
+}
+
+
+.newpage span{
+  color: #adb5bd;
+}
+
+#newfrm{
+  max-width: 320px;
+  width: 100vw;
+  margin: 2em auto;
+}
+
+#newfrm >  input, .signbtn{
+  border: 1px solid #e9ecef;
+  padding: .9em 1em;
+}
+
+#newfrm > input:focus{
+  outline: none;
+}
+
+#newfrm > .signbtn{
+  background-color: #2C3268;
+  color: #e9ecef;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 10px ;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #095cae; 
+  }
+
+}
+@media (max-width: 768px) {
+  .form {
+    max-width: 90%; 
+  }
+}
+@media (max-width: 480px) {
+  .form-input,
+  .form-btn {
+    font-size: 12px; 
+  }
+}
+
+.flex{
+  display: flex;
+  gap: 1em;
+}
+
+.flex-col{
+  flex-direction: column;
+}
