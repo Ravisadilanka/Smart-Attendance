@@ -92,7 +92,7 @@ const ViewStaff = () => {
 
     const handleUpdate = async () => {
         try {
-            // Update the user details in the database
+            // Update the user details in the database using uid
             const userRef = ref(db, `users/${editingUser.uid}`);
             await set(userRef, {
                 name: editForm.name,
@@ -164,6 +164,7 @@ const ViewStaff = () => {
                     </table>
                 </div>
             </div>
+            <button type="submit" className='bottom-button1'>Add Lecturer</button>
             <ConfirmationModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

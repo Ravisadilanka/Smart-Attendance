@@ -111,7 +111,7 @@ export default function UserProfile() {
             {errorMessage && <p className="error-msg">{errorMessage}</p>}
 
           <form id='form' className='flex flex-col form'>
-            <div id='input-item'>
+            {userData.name ? <div id='input-item'>
               <input
                 type='text'
                 id='name'
@@ -122,9 +122,9 @@ export default function UserProfile() {
                 onChange={handleChange}
                 readOnly={!editMode}
               />
-            </div>
+            </div> : null}
 
-            <div id='input-item'>
+            {userData.email ? <div id='input-item'>
               <input
                 type='text'
                 id='email'
@@ -135,9 +135,9 @@ export default function UserProfile() {
                 onChange={handleChange}
                 readOnly={!editMode}
               />
-            </div>
+            </div> : null}
 
-            <div id='input-item'>
+            {userData.nicNumber ? <div id='input-item'>
               <input
                 type='text'
                 id='nicNumber'
@@ -148,8 +148,8 @@ export default function UserProfile() {
                 onChange={handleChange}
                 readOnly={!editMode}
               />
-            </div>
-            <div id='input-item'>
+            </div> : null}
+            {userData.staffId ? <div id='input-item'>
               <input
                 type='text'
                 id='staffId'
@@ -160,7 +160,7 @@ export default function UserProfile() {
                 onChange={handleChange}
                 readOnly={!editMode}
               />
-            </div>
+            </div> : null}
 
 
             {editMode ? (

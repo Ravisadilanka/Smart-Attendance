@@ -17,7 +17,6 @@ export default function Login() {
       const user = await signIn(data.email, data.password);
       console.log('User logged in successfully', user);
       // Redirect user to the dashboard or home page after successful login
-      userData.adminId ?  navigate('/admin_dashboard') : navigate('/dashboard');
     } catch (error) {
       console.error(error);
       setError('Failed to log in. Please check your credentials.');
@@ -26,34 +25,63 @@ export default function Login() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-        try {
-            const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
-                if (user) {
-                    const userRef = ref(db, `users/${user.uid}`);
+      try {
+        const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const userRef = ref(db, `users/${user.uid}`);
+            const userSnapshot = await get(userRef);
+            const userDataFromFirebase = userSnapshot.val();
 
-                    const snapshot = await get(userRef);
-                    const userDataFromFirebase = snapshot.val();
+            // console.log('User Data:', userDataFromFirebase);
 
-                    setUserData(userDataFromFirebase || {});
+            if (userDataFromFirebase && userDataFromFirebase.adminId) {
+              navigate('/admin_dashboard');
+            } else if (userDataFromFirebase && userDataFromFirebase.staffId) {
+              navigate('/dashboard');
+            } else {
+              // If no adminId or staffId, check "Students" database for matching email
+              const studentsRef = ref(db, 'Students');
+              const studentsSnapshot = await get(studentsRef);
+              const studentsDataFromFirebase = studentsSnapshot.val();
 
-                    // Log adminId to console
-                    // console.log('Admin ID:', userDataFromFirebase.adminId);
-                } else {
-                    console.error('No authenticated user');
-                    // Handle accordingly, redirect to login or show a message
-                }
-            });
+              if (studentsDataFromFirebase) {
+                // Iterate through the nodes in "Students" database
+                Object.keys(studentsDataFromFirebase).forEach((manualUniqueId) => {
+                  const studentNode = studentsDataFromFirebase[manualUniqueId];
 
-            // Don't forget to unsubscribe when the component unmounts
-            return () => unsubscribeAuth();
-        } catch (error) {
-            console.error('Error fetching user data:', error.message);
-        }
+                  // Check if the student node has the "email" property
+                  if (studentNode.email && studentNode.email === user.email) {
+                    // console.log('Student Data Found:', studentNode);
+                    navigate('/student_dashboard');
+                    return;
+                  }
+                });
+
+                console.error('User data not found in "Students" database');
+                // Handle accordingly, redirect to login or show a message
+              } else {
+                console.error('No data found in "Students" database');
+                // Handle accordingly, redirect to login or show a message
+              }
+            }
+          } else {
+            console.error('No authenticated user');
+            // Handle accordingly, redirect to login or show a message
+          }
+        });
+
+        // Don't forget to unsubscribe when the component unmounts
+        return () => unsubscribeAuth();
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+      }
     };
 
     // Call the fetchUserData function
     fetchUserData();
-}, []);
+  }, []); 
+
+
 
 
   return (

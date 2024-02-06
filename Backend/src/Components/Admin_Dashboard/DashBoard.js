@@ -10,13 +10,16 @@ export default function AdminDashboard() {
   const handleStaff = () => {
     navigate('/view_staffdetails');
   };
+  const handleStudents = () => {
+    navigate('/academic_years');
+  };
 
   return (
     <section>
     <Sidemenu />
       <div className='dashboard-btn-section'>
         <button className='dashboard-btn' onClick={handleStaff}>Staff</button>
-        <button className='dashboard-btn'>Students</button>
+        <button className='dashboard-btn' onClick={handleStudents}>Students</button>
       </div>
     </section>
   )
