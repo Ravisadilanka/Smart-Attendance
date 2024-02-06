@@ -15,29 +15,33 @@ export default function Signup() {
   const onSubmit = async (data) => {
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
-
+  
       const db = getDatabase();
-      const userRef = ref(db, "users/" + auth.currentUser.uid);
-      set(userRef, {
+      const studentRef = ref(db, "Students/" + data.id); // Use staffId as the node key
+  
+      set(studentRef, {
         name: data.name,
-        staffId: data.staffId,
-        nicNumber: data.nicNumber,
+        id: data.id,
+        Department: data.department,
+        AcademicYear: data.AcademicYear,
         email: data.email,
       });
-
+  
       console.log('User created successfully');
-      setError('User created successfully')
+      setError('User created successfully');
       setFormVisible(false);
+  
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/student_dashboard');
       }, 2000);
     } catch (error) {
       console.log(error.message);
       const errorMessage = error.message.split('Error (')[1].split(').')[0];
-      setError(errorMessage)
+      setError(errorMessage);
       setFormVisible(true);
     }
-  }; 
+  };
+  
 
   return (
     <section>
@@ -59,23 +63,24 @@ export default function Signup() {
             {...register('name', { required: 'Name is required' })}
           />
           {errors.name && <span className="error" style={{color: 'red'}}>{errors.name.message}</span>}
-
           <input
             type="text"
-            placeholder='Staff ID'
-            {...register('staffId', {
-              required: 'Staff ID is required',
-              validate: (value) => Number.isInteger(Number(value)) || 'Invalid staff ID',
-            })}
+            placeholder='Student ID'
+            {...register('id', { required: 'Name is required' })}
           />
-          {errors.staffId && <span className="error" style={{color: 'red'}}>{errors.staffId.message}</span>}
-
+          {errors.name && <span className="error" style={{color: 'red'}}>{errors.name.message}</span>}
           <input
             type="text"
-            placeholder='NIC Number'
-            {...register('nicNumber', { required: 'NIC Number is required' })}
+            placeholder='Department'
+            {...register('department', { required: 'Name is required' })}
           />
-          {errors.nicNumber && <span className="error" style={{color: 'red'}}>{errors.nicNumber.message}</span>}
+          {errors.name && <span className="error" style={{color: 'red'}}>{errors.name.message}</span>}
+          <input
+            type="text"
+            placeholder='Academic Year'
+            {...register('AcademicYear', { required: 'Name is required' })}
+          />
+          {errors.name && <span className="error" style={{color: 'red'}}>{errors.name.message}</span>}
 
           <input
             type="text"

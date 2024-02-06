@@ -12,7 +12,6 @@ export default function UserProfile() {
     email: '',
     nicNumber: '',
     staffId: '',
-    // Add other user data fields here
   });
 
   const [editMode, setEditMode] = useState(false);

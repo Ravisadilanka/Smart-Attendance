@@ -164,6 +164,7 @@ const ViewStaff = () => {
                     </table>
                 </div>
             </div>
+            <button type="submit" className='bottom-button1'>Add Lecturer</button>
             <ConfirmationModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

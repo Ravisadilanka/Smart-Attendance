@@ -1,7 +1,9 @@
 .register2 {
   min-width: 400px;
   background-color: #2C326817;
-  border-radius: 12px;
+  border-radius: 60px;
+  margin-top: 120px;
+  border: 1px solid #141415;
 }
 
 .col-1 {
@@ -10,7 +12,7 @@
  align-items: center;
  justify-content: center;
  padding: 18px 32px 0px 32px;
- margin-top: 60px;
+ margin-top: 30px;
 }
 
 .col-1 img {
@@ -22,6 +24,7 @@
  padding: 6px 8px;
  border: none;
  width: 100%;
+ margin-left: 80px;
 }
 
 .col-1 input:focus {
@@ -51,7 +54,8 @@
   transition: background-color 0.3s;
   width: 60%;
   border: 1px solid #e9ecef;
-  padding: .6em .6em;
+  padding: .6em .1em;
+  margin-left: 120px;
  
   
   }
