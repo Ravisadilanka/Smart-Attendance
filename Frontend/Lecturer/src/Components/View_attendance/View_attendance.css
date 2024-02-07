@@ -9,7 +9,7 @@
   border-radius: 10px;
   white-space:nowrap ;
   width: 100%;
-  max-width: 500%;
+  max-width: 700%;
   margin: auto;
   overflow-x: auto;
   margin-left: 150px;
@@ -45,4 +45,5 @@
 
 .table th:nth-child(3), .table td:nth-child(3) {
   width: 30%; 
-}
+}  
+

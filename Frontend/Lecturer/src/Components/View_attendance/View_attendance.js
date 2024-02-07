@@ -2,10 +2,12 @@ import React from 'react'
 import './View_attendance.css';
 import { VscCheck } from "react-icons/vsc";
 import { VscClose } from "react-icons/vsc";
+import Sidemenu from '../SideMenu/Sidemenu';
 
 export default function Attendance() {
   return (
     <div className='table-wrapper'>
+        <Sidemenu/>
         <table className='table'>
             <thead className='expand'>
                 <tr>

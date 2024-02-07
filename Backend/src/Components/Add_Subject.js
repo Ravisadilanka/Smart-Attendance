@@ -4,6 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase'; // Import both auth and db
 import { ref, push } from 'firebase/database';
+import Sidemenu from './SideMenu/Sidemenu';
 
 export default function AddSubject() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,6 +47,7 @@ export default function AddSubject() {
 
   return (
     <div>
+      <Sidemenu/>
       <section>
         <div className="register2">
           <form id='form' className='flex flex-col' onSubmit={handleSubmit(handleAddSubject)}>

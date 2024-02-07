@@ -7,22 +7,20 @@
     flex: 0 0 calc(30% - 20px);
     max-width: calc(30% - 20px);
     width: 100%;
-    background: RGB(30, 46, 73);
+    background:  #8c91b4;
+    color: black;
     border-radius: 10px;
-    padding: 15px 10px;
-    margin-bottom: 25px;
+    padding: 25px ;
+    margin-bottom: 45px;
     transition: .3s;
     border: 2px solid transparent;
     font: 5px;
     position:relative;
-    color: aliceblue;
-    box-shadow: 0 4px 8px rgba(218, 17, 17, 0.1);
+    cursor: pointer;
   }
   
   .card:hover{
-    border-color: #2C3268;
-    transform: translateY(-5px); /* Add a slight lift on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: rgb(168, 164, 192);
   }
   .containe{
     max-width: calc(100% - 220px);
@@ -42,11 +40,10 @@
   
   .button-container {
     position:absolute;
-    bottom: 50px;
-    left: 45%;
+    bottom: 80px;
+    left: 70%;
     transform: translateX(-50%);
     margin-bottom: 20px; 
-
   }
   
   .bottom-button {
@@ -64,9 +61,6 @@
     position: absolute;
     top: 0px;
     right: 0;
-    padding: 5px;
+    padding: 15px;
     cursor: pointer;
   }
-  
-  
-  
