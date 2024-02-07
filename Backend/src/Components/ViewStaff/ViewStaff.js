@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import Sidemenu from "../SideMenu/Sidemenu";
-import { get, ref, remove, set } from "firebase/database";
+import { get, ref, remove, set, push } from "firebase/database";
+import { createUserWithEmailAndPassword, deleteUser, getAuth, updateProfile } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDatabase, child } from "firebase/database";
@@ -19,6 +20,16 @@ const ViewStaff = () => {
         nicNumber: "",
         staffId: "",
     });
+    const [isAddLecturerModalOpen, setIsAddLecturerModalOpen] = useState(false);
+    const [newLecturer, setNewLecturer] = useState({
+        name: "",
+        email: "",
+        nicNumber: "",
+        staffId: "",
+    });
+    const [isAddLecturerFieldsVisible, setIsAddLecturerFieldsVisible] = useState(false);
+    const [lecturerError, setLecturerError] = useState('')
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -35,7 +46,6 @@ const ViewStaff = () => {
                                 uid: uid
                             }));
                             setUsers(usersWithUid);
-                            console.log('Users with UID:', usersWithUid);
                         }
                     } else {
                         console.error('No authenticated user');
@@ -47,6 +57,10 @@ const ViewStaff = () => {
                 console.error('Error fetching user data:', error.message);
             }
         };
+
+        setTimeout(() => {
+            setLecturerError('');
+        }, 3000);
 
         fetchUserData();
     }, []);
@@ -72,19 +86,28 @@ const ViewStaff = () => {
 
     const confirmDelete = async () => {
         try {
-            // Add logic to delete the user from the database
+            // 1. Delete user data from the database
             const rootRef = ref(getDatabase());
             const userRef = child(rootRef, `users/${userToDelete}`);
             await remove(userRef);
-
-            // Update the state to reflect the deletion
+    
+            // 2. Delete user account from Firebase Authentication
+            const authInstance = getAuth(); // Use getAuth to get the auth instance
+            const user = authInstance.currentUser;
+    
+            if (user) {
+                console.log("Deleting user account:", user.uid);
+                await deleteUser(user);
+            } else {
+                console.error("No authenticated user found");
+            }
+    
+            // 3. Update the state to remove the deleted user
             setUsers(prevUsers => prevUsers.filter(user => user.uid !== userToDelete));
-
-            console.log(`User with UID ${userToDelete} deleted successfully`);
         } catch (error) {
             console.error('Error deleting user:', error.message);
+            setLecturerError(error.message)
         } finally {
-            // Reset state and close the modal
             setUserToDelete(null);
             setIsModalOpen(false);
         }
@@ -92,7 +115,6 @@ const ViewStaff = () => {
 
     const handleUpdate = async () => {
         try {
-            // Update the user details in the database using uid
             const userRef = ref(db, `users/${editingUser.uid}`);
             await set(userRef, {
                 name: editForm.name,
@@ -101,18 +123,15 @@ const ViewStaff = () => {
                 staffId: editForm.staffId || null,
             });
 
-            // Update the state to reflect the changes
             setUsers((prevUsers) =>
                 prevUsers.map((user) =>
                     user.uid === editingUser.uid ? { ...user, ...editForm } : user
                 )
             );
-
-            console.log(`User with UID ${editingUser.uid} updated successfully`);
         } catch (error) {
             console.error('Error updating user:', error.message);
+            setLecturerError(error.message)
         } finally {
-            // Reset state and close the edit form/modal
             setEditingUser(null);
             setEditForm({
                 name: "",
@@ -123,13 +142,56 @@ const ViewStaff = () => {
         }
     };
 
-    // Filter users who have staffId
+    const openAddLecturerModal = () => {
+        setIsAddLecturerModalOpen(true);
+        setNewLecturer({
+            name: "",
+            email: "",
+            nicNumber: "",
+            staffId: "",
+        });
+        setIsAddLecturerFieldsVisible(true);
+    };
+
+    const handleAddLecturer = async () => {
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, newLecturer.email, "123456");
+
+            await updateProfile(user, {
+                displayName: newLecturer.name,
+            });
+
+            const usersRef = ref(db, `users/${user.uid}`);
+            await set(usersRef, {
+                name: newLecturer.name,
+                email: newLecturer.email,
+                nicNumber: newLecturer.nicNumber || null,
+                staffId: newLecturer.staffId || null,
+            });
+
+            setUsers(prevUsers => [
+                ...prevUsers,
+                {
+                    ...newLecturer,
+                    uid: user.uid,
+                },
+            ]);
+        } catch (error) {
+            console.error('Error adding lecturer:', error.message);
+            setLecturerError(error.message)
+        } finally {
+            setIsAddLecturerFieldsVisible(false);
+            setIsAddLecturerModalOpen(false);
+        }
+    };
+
     const usersWithStaffId = users.filter(user => user.staffId);
 
     return (
         <div className="table-wrapper">
             <Sidemenu />
             <div className='table-scroll'>
+                <p>{lecturerError}</p>
                 <table className='table'>
                     <thead className='expand'>
                         <tr>
@@ -164,7 +226,9 @@ const ViewStaff = () => {
                     </table>
                 </div>
             </div>
-            <button type="submit" className='bottom-button1'>Add Lecturer</button>
+            <button type="button" className='bottom-button1' onClick={openAddLecturerModal}>
+                Add Lecturer
+            </button>
             <ConfirmationModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
@@ -173,7 +237,7 @@ const ViewStaff = () => {
                 message="Are you sure you want to delete this user?"
             />
             {editingUser && (
-                <div className={`edit-modal ${isModalOpen ? 'blur-effect' : ''}`}>
+                <div className={`edit-modal`}>
                     <h2>Edit User</h2>
                     <form>
                         <input
@@ -206,6 +270,47 @@ const ViewStaff = () => {
                         <button type="button" onClick={() => setEditingUser(null)}>
                             Cancel
                         </button>
+                    </form>
+                </div>
+            )}
+            {isAddLecturerFieldsVisible && (
+                <div className={`add-lecturer-modal`}>
+                    <h2>Add Lecturer</h2>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={newLecturer.name}
+                            onChange={(e) => setNewLecturer({ ...newLecturer, name: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            value={newLecturer.email}
+                            onChange={(e) => setNewLecturer({ ...newLecturer, email: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="NIC number"
+                            value={newLecturer.nicNumber}
+                            onChange={(e) => setNewLecturer({ ...newLecturer, nicNumber: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Staff ID"
+                            value={newLecturer.staffId}
+                            onChange={(e) => setNewLecturer({ ...newLecturer, staffId: e.target.value })}
+                        />
+                        <button type="button" onClick={handleAddLecturer}>
+                            Add Lecturer
+                        </button>
+                        <button type="button" onClick={() => {
+                            setIsAddLecturerModalOpen(false);
+                            setIsAddLecturerFieldsVisible(false); // Add this line to hide the fields
+                        }}>
+                            Cancel
+                        </button>
+
                     </form>
                 </div>
             )}
