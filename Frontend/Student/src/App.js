@@ -15,6 +15,7 @@ import Notification06 from './components/Notification06';
 import Footer from './components/Footer';
 import Selectsubject from './components/Selectsubject';
 import Selectlesson from './components/Selectlesson';
+import Userprofile from './components/Userprofile';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path='/Notification05' element={<Notification05/>}/>
           <Route path='/Notification06' element={<Notification06/>}/>
           <Route path='/Selectlesson' element={<Selectlesson/>}/>
+          <Route path='/Userprofile' element={<Userprofile/>}/>
           
         </Routes>
       </div>
