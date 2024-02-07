@@ -10,7 +10,7 @@ body{
 }
 
 .App {
-  height: 130vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,34 +101,39 @@ body{
 
 .notification-01 {
   background-color: #d6daf9ba;
-  margin-top: 20px;;
-  border: 2px #66696c solid;
+  margin-top: 1px;
+  border: 10px #032a54 solid;
   border-radius: 19px;
-  padding: 20px;
+  padding: 15px;
 
 }
 
+.setit{
+  margin-top: 70px;
+}
+
 .not-01 {
-  border-bottom: 1px solid #032a54;
-  margin: 4px;
-  padding-right:180px;
-  padding-top: 9px;
+  border-bottom: 5px solid #032a54;
+  margin: 3px;
+  margin-left: 10px;
+  padding-right: 100px;
+  padding-top: 10px;
   padding-bottom: 9px;
-  
+  margin-top: 10px;
   font-size: larger ;
 }
 
 .not-01 p {
   font-family: Tahoma;
-  font-size: 0.9em ;
+  font-size: 0.6em ;
   color: #66696c;
 }
 
 .butn{
   background-color: #2c3268;
   color: #F3F3F8;
-  margin-left: 70px;
-  margin-top: -20px;
+  margin-left: 300px;
+  margin-top: 20px;
   border-radius: 90px;
   cursor: pointer;
   padding: 13px 20px;
@@ -150,6 +155,7 @@ body{
   text-align: center;
   border: 1px solid #3498db;
   border-radius: 24px;
+  margin-top: 100px;
   margin-right: 70px;
 }
 
@@ -164,7 +170,7 @@ body{
   text-align: center;
   border: 1px solid #3498db;
   border-radius: 24px;
-  margin-top: 0px;
+  margin-top: 130px;
   margin-left: 6px;
 }
 
@@ -172,6 +178,7 @@ body{
   background-color: #2c3268;
   color: #F3F3F8;
   margin-left: 90px;
+  margin-top: 110px;
   border-radius: 90px;
   cursor: pointer;
   padding: 11px 32px;
@@ -182,14 +189,14 @@ body{
 }
 
 .empty-notification{
-  border: 1px black solid;
-  padding: 210px 220px;
+  border: 10px #032a54 solid;
+  padding: 210px 240px;
+  margin-left: 0px;
   font-size: 27px;
-  font-weight:300;
-  color: #66696c;
+  color: #032a54;
   background-color: #d6daf9ba;
-  margin-top: 30px;
-  margin-bottom: 20px;
+  margin-top: 90px;
+  margin-bottom: 30px;
   border-radius: 19px;
 }
 
@@ -210,7 +217,7 @@ body{
   line-height: 40px;
   text-align: center;
   margin-bottom: 40px;
-  margin-top: -300px;
+  margin-top: -90px;
 }
 
 .sect1234{
