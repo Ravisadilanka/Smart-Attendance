@@ -19,6 +19,8 @@ import ViewStaff from './Components/ViewStaff/ViewStaff';
 import AccademicYears from './Components/AccedemicYears/AcademicYears';
 import ViewStudents from './Components/ViewStudents/ViewStudents';
 import StudentDashboard from './Components/Student_Dashboard/StudentDashboard';
+import ViewSubject from './Components/ViewSubject/ViewSubject';
+import StudentAttendance from './Components/StudentAttendance/StudentAttendance';
 
 function App() {
   return (
@@ -33,7 +35,9 @@ function App() {
           <Route path='/Add_Subject' element={<AddSubject />} />
           <Route path='/Dashboard' element={<Dashboard />} />
           <Route path={`/Select_a_Subject/:subjectID`} element={<SelectSubject />} />
+          <Route path={`/ViewSubject/:subjectID`} element={<ViewSubject />} />
           <Route path={`/Attendance/:lectureNumber`} element={<Attendance />} />
+          <Route path={`/StudentAttendance/:lectureNumber`} element={<StudentAttendance />} />
           <Route path='/Dashboard_New_User' element={<DashboardNewUser />} />
           <Route path='/forgot_password' element={<ForgotPassword />} />
           <Route path='/notifications' element={<Notification />} />
