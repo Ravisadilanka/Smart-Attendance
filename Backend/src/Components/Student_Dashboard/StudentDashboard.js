@@ -10,6 +10,16 @@ export default function StudentDashboard() {
   const navigate = useNavigate();
   const [academicYear, setAcademicYear] = useState('')
 
+  const handleCardClick = (event, subjectID) => {
+
+    // Prevent the event from propagating to the parent container
+    event.stopPropagation();
+
+    // Redirect to the Add_Lecture route with the selected subjectID
+    navigate(`/ViewSubject/${subjectID}`);
+
+};
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -79,7 +89,7 @@ export default function StudentDashboard() {
       <div className='cards'>
         {subjects.map((subject, i) =>
         (
-          <div key={i} className='card'>
+          <div key={i} className='card' onClick={(e) => handleCardClick(e, subject.subjectID)}>
             <h2>{subject.subjectID}</h2>
             <h3>{subject.subjectName}</h3>
             <h5>{subject.Year}</h5>
