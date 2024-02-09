@@ -39,6 +39,7 @@ const Sidemenu = () => {
             const userRef = ref(db, `users/${user.uid}`);
             const snapshot = await get(userRef);
             const userDataFromFirebase = snapshot.val();
+
             setUserData(userDataFromFirebase || {});
           } catch (error) {
             console.error('Error fetching user data:', error);
@@ -93,7 +94,7 @@ const Sidemenu = () => {
     <div className='sidebar'>
       <ul>
         <li className={activeLink === 'dashboard' ? 'active' : ''}>
-          <Link to={userData.adminId ? "/admin_dashboard" : "/dashboard"} onClick={() => handleLinkClick('dashboard')}>
+          <Link to={userData.adminId ? "/admin_dashboard" : userData.staffId ? "/dashboard" : "/student_dashboard"} onClick={() => handleLinkClick('dashboard')}>
             <span><MdOutlineDashboard /></span> {' '} Dashboard</Link>
         </li>
         <li className={activeLink === 'notifications' ? 'active' : ''}>

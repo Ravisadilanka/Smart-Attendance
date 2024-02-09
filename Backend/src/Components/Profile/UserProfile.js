@@ -20,33 +20,46 @@ export default function UserProfile() {
 
   useEffect(() => {
     const fetchUserData = async () => {
-        try {
-            const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
-                if (user) {
-                    const userRef = ref(db, `users/${user.uid}`);
+      try {
+        const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const studentRef = ref(db, 'Students');
+            const studentsSnapshot = await get(studentRef);
 
-                    const snapshot = await get(userRef);
-                    const userDataFromFirebase = snapshot.val();
+            const studentDataFromFirebase = studentsSnapshot.val();
+            const studentEmails = Object.values(studentDataFromFirebase).map(student => student.email);
 
-                    setUserData(userDataFromFirebase || {});
-                } else {
-                    console.error('No authenticated user');
-                    // Handle accordingly, redirect to login or show a message
-                }
-            });
+            if (studentEmails.includes(user.email)) {
+              // User is a student
+              const studentData = Object.values(studentDataFromFirebase)
+                .find(student => student.email === user.email);
 
-            return () => {
-                // Clean up the subscription on component unmount
-                unsubscribeAuth();
-            };
-        } catch (error) {
-            console.error('Error fetching user data:', error.message);
-        }
+              setUserData(studentData || {});
+            } else {
+              // User is not a student, assuming Admin or Lecturer
+              const userRef = ref(db, `users/${user.uid}`);
+              const userSnapshot = await get(userRef);
+
+              const userDataFromFirebase = userSnapshot.val();
+              setUserData(userDataFromFirebase || {});
+            }
+          } else {
+            console.error('No authenticated user');
+            // Handle accordingly, redirect to login or show a message
+          }
+        });
+
+        return () => {
+          // Clean up the subscription on component unmount
+          unsubscribeAuth();
+        };
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
+      }
     };
 
     fetchUserData();
-}, []);
-
+  }, []);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -60,22 +73,39 @@ export default function UserProfile() {
   const saveChanges = async () => {
     try {
       const currentUser = auth.currentUser;
-
+  
       if (currentUser) {
-        const userRef = ref(db, `users/${currentUser.uid}`);
-
+        let userRef;
+  
+        // Check if the user is a student
+        const studentRef = ref(db, 'Students');
+        const studentSnapshot = await get(studentRef);
+        const studentDataFromFirebase = studentSnapshot.val();
+        const studentEmails = Object.values(studentDataFromFirebase).map(student => student.email);
+  
+        if (studentEmails.includes(currentUser.email)) {
+          // User is a student
+          const studentData = Object.values(studentDataFromFirebase)
+            .find(student => student.email === currentUser.email);
+  
+          userRef = ref(db, `Students/${studentData.id}`);
+        } else {
+          // User is not a student, assuming Admin or Lecturer
+          userRef = ref(db, `users/${currentUser.uid}`);
+        }
+  
         // Update the user data in the database
         await update(userRef, userData);
-
+  
         // Set edit mode back to false
         setEditMode(false);
-
+  
         // Set success message
         setSuccessMessage('Changes saved successfully');
-
+  
         // Clear any previous error message
         setErrorMessage('');
-
+  
         // Clear success message after 10 seconds
         setTimeout(() => {
           setSuccessMessage('');
@@ -85,13 +115,13 @@ export default function UserProfile() {
       }
     } catch (error) {
       console.error('Error updating user data:', error.message);
-
+  
       // Set error message
       setErrorMessage('Error saving changes. Please try again.');
-
+  
       // Clear any previous success message
       setSuccessMessage('');
-
+  
       // Clear error message after 10 seconds
       setTimeout(() => {
         setErrorMessage('');
