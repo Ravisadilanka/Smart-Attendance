@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 import { onAuthStateChanged } from 'firebase/auth';
 import { get, ref } from 'firebase/database';
+import background from '../Images/backgd.png';
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -85,7 +86,8 @@ export default function Login() {
 
 
   return (
-    <div className='registerLog'>
+    <div>
+      <img src={background} alt="Background Image" className="image" />
       <div className="col-1-log">
         <form id='form' className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
           <input
