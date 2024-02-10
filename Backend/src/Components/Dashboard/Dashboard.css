@@ -1,138 +1,92 @@
-/*.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-
 .card {
-    flex: 0 0 calc(30% - 20px);
-    max-width: 100%;
-    background: #e6e9ed;
-    border-radius: 10px;
-    padding: 15px 10px;
-    margin-bottom: 25px;
-    transition: .3s;
-    border: 2px solid transparent;
-    font: 5px;
-    position: relative;
+  flex: 0 0 calc(30% - 20px);
+  max-width: calc(30% - 20px);
+  width: 900px;
+  background: #d4e1f2;
+  border-radius: 10px;
+  padding: 15px 10px;
+  margin-top: -120px;
+  transition: .3s;
+  border: 2px solid transparent;
+  font: 5px;
+  position:relative;
+  color: black;
+  box-shadow: 0 4px 8px rgba(37, 36, 36, 0.1);
 }
 
-.card:hover {
-    border-color: #2C3268;
+.card:hover{
+  border-color: #2C3268;
+  transform: translateY(-5px); /* Add a slight lift on hover */
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+.containe{
+  max-width: calc(100% - 220px);
+  width: 100%;
+  margin: auto;
+  padding: 0px 20px;
+  box-sizing: border-box;
+  margin-left: 220px;
 
-.containe {
-    max-width: 1300px;
-    width: 100%;
-    margin: auto;
-    padding: 0px 20px;
-    height: 400px;
-    overflow-y: auto;
 }
-
-section {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+section{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button-container {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 20px;
+  position:absolute;
+  bottom: 50px;
+  left: 45%;
+  transform: translateX(-50%);
+  margin-bottom: 20px; 
+
 }
 
 .bottom-button {
-    padding: 10px 20px;
-    background-color: #2C3268;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px
+  padding: 10px 20px;
+  background-color:  #2C3268;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 250px;
 }
 
 .icon-container {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    padding: 5px;
-    cursor: pointer;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  padding: 5px;
+  cursor: pointer;
 }
-*/
 
-.cards{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .card {
-    flex: 0 0 calc(30% - 20px);
-    max-width: calc(30% - 20px);
-    width: 900px;
-    background: #d4e1f2;
-    border-radius: 10px;
-    padding: 15px 10px;
-    margin-top: -120px;
-    transition: .3s;
-    border: 2px solid transparent;
-    font: 5px;
-    position:relative;
-    color: black;
-    box-shadow: 0 4px 8px rgba(37, 36, 36, 0.1);
-  }
-  
-  .card:hover{
-    border-color: #2C3268;
-    transform: translateY(-5px); /* Add a slight lift on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  .containe{
-    max-width: calc(100% - 220px);
-    width: 100%;
-    margin: auto;
-    padding: 0px 20px;
-    box-sizing: border-box;
-    margin-left: 220px;
-  
-  }
-  section{
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .button-container {
-    position:absolute;
-    bottom: 50px;
-    left: 45%;
-    transform: translateX(-50%);
-    margin-bottom: 20px; 
+/* Example media query for smaller screens */
+@media (max-width: 768px) {
+.card {
+  flex: 0 0 100%; /* Full-width cards on smaller screens */
+  max-width: 100%; /* Override fixed width */
+  margin-top: 0; /* Adjust for different spacing */
+}
 
-  }
-  
-  .bottom-button {
-    padding: 10px 20px;
-    background-color:  #2C3268;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 250px;
-  }
-  
-  .icon-container {
-    position: absolute;
-    top: 0px;
-    right: 0;
-    padding: 5px;
-    cursor: pointer;
-  }
-  
-  
-  
+.containe {
+  margin-left: 0; /* Remove sidemenu offset */
+}
+
+.button-container {
+  position: relative; /* Position button normally on smaller screens */
+  transform: none;
+  margin-bottom: 0;
+}
+
+.bottom-button {
+  margin-left: 0; /* Remove manual offset */
+}
+}
