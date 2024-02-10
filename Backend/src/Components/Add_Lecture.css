@@ -1,0 +1,55 @@
+.register3 {
+    max-width: 900px;
+    width: 100%;
+    margin: 80px auto;
+    padding: 20px ;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: #d5e2f4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 130px;
+}
+
+form {
+    font-size: 12px;
+}
+
+.form-row {
+    margin-bottom: -8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-row {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}

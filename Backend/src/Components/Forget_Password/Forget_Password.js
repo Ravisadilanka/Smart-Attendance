@@ -42,8 +42,9 @@ export default function ForgetPassword() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <span className="error-message">{errorMessage}</span>
-            <span className="success-message">{successMessage}</span>
+           <span className={errorMessage ? "error-message" : ""}>{errorMessage}</span>
+          <span className={successMessage ? "success-message" : ""}>{successMessage}</span>
+
 
             <button className='btn' type="button" onClick={handleForgetPassword}>
               Send Password Reset Email

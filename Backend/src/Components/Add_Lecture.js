@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { auth, db } from '../firebase';
 import { ref, push, set } from 'firebase/database';
 import Sidemenu from './SideMenu/Sidemenu';
+import './Add_Lecture.css';
 
 export default function Add_Lecture() {
     const { subjectID } = useParams(); // Get the subjectID from the URL parameters
@@ -54,7 +55,7 @@ export default function Add_Lecture() {
     <div>
       <Sidemenu />
       <section>
-        <div className="register2">
+        <div className="register3">
           <form id='form' className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
             <div className='form-row'>
               <label htmlFor="lecnumber">Lecture Number</label>

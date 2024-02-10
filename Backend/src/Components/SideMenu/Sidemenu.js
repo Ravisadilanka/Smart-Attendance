@@ -15,7 +15,6 @@ const Sidemenu = () => {
   const [upcomingLecturesCount, setUpcomingLecturesCount] = useState(0);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
-
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
@@ -108,7 +107,7 @@ const Sidemenu = () => {
           </Link>
         </li>
         <li>
-          <Link onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
+          <Link className='assign' onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
         </li>
       </ul>
     </div>

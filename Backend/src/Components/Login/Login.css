@@ -17,7 +17,6 @@
 .col-1-log{
     margin: auto;
     padding: 3em 0;
-    background-color: #e2f0fd;
     margin-top: -80px;
     background-size: 100px;
     
@@ -39,6 +38,6 @@
 .image {
     max-width: 100%;
     margin-bottom: 20px;
-    margin-top: 0px;
+    margin-top: -40px;
     margin-left: 0px;
   }

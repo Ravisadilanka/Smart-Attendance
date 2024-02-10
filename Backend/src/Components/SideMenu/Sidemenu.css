@@ -1,9 +1,9 @@
 .sidebar{
-    height:250%;
+    height:455px;
     width:220px;
     background-color: #6F7B9A;
     position: absolute;
-    top: 76px;
+    top: 90px;
     left: 0;
     
     ul {
@@ -49,5 +49,10 @@
     /* Add this to style the link when there is a notification count */
     .notification-link {
       position: relative;
+    }
+
+    .assign{
+      margin-left: -32px;
+      margin-bottom: 30px;
     }
 }
