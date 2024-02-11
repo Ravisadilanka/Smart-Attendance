@@ -1,63 +1,65 @@
-.cards{
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 20px;
 }
+
 .card {
   flex: 0 0 calc(30% - 20px);
   max-width: calc(30% - 20px);
-  width: 900px;
+  width: 300px;
   background: #d4e1f2;
   border-radius: 10px;
   padding: 15px 10px;
-  margin-top: -120px;
   transition: .3s;
   border: 2px solid transparent;
   font: 5px;
-  position:relative;
+  position: relative;
   color: black;
   box-shadow: 0 4px 8px rgba(37, 36, 36, 0.1);
 }
 
-.card:hover{
+.card:hover {
   border-color: #2C3268;
   transform: translateY(-5px); /* Add a slight lift on hover */
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.containe{
+
+.containe {
   max-width: calc(100% - 220px);
   width: 100%;
   margin: auto;
   padding: 0px 20px;
   box-sizing: border-box;
   margin-left: 220px;
-
 }
-section{
+
+section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.button-container {
-  position:absolute;
+.button-container1 {
+  position: absolute;
   bottom: 50px;
   left: 45%;
   transform: translateX(-50%);
-  margin-bottom: 20px; 
-
+  margin-bottom: 20px;
 }
 
-.bottom-button {
+.bottom-button1 {
   padding: 10px 20px;
-  background-color:  #2C3268;
+  background-color: #2C3268;
   color: white;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
   margin-left: 250px;
+  width: 200px;
 }
 
 .icon-container {
@@ -70,23 +72,23 @@ section{
 
 /* Example media query for smaller screens */
 @media (max-width: 768px) {
-.card {
-  flex: 0 0 100%; /* Full-width cards on smaller screens */
-  max-width: 100%; /* Override fixed width */
-  margin-top: 0; /* Adjust for different spacing */
-}
+  .card {
+    flex: 0 0 100%; /* Full-width cards on smaller screens */
+    max-width: 100%; /* Override fixed width */
+    margin-top: 0; /* Adjust for different spacing */
+  }
 
-.containe {
-  margin-left: 0; /* Remove sidemenu offset */
-}
+  .containe {
+    margin-left: 0; /* Remove sidemenu offset */
+  }
 
-.button-container {
-  position: relative; /* Position button normally on smaller screens */
-  transform: none;
-  margin-bottom: 0;
-}
+  .button-container {
+    position: relative; /* Position button normally on smaller screens */
+    transform: none;
+    margin-bottom: 0;
+  }
 
-.bottom-button {
-  margin-left: 0; /* Remove manual offset */
-}
+  .bottom-button {
+    margin-left: 0; /* Remove manual offset */
+  }
 }

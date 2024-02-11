@@ -188,8 +188,8 @@ export default function Dashboard() {
                     </div>
                 </div>
             </section>
-            <div className='button-container'>
-                <button className='bottom-button' onClick={handleClick}>
+            <div className='button-container1'>
+                <button className='bottom-button1' onClick={handleClick}>
                     Add more Subjects
                 </button>
             </div>

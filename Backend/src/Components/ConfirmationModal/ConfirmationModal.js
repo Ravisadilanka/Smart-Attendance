@@ -33,7 +33,7 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
             style={customStyles}
             contentLabel="Confirmation Modal"
         >
-            <h2 className="modal-title">Are you sure you want to delete this subject?</h2>
+            <h2 className="modal-title">Are you sure you want to delete this?</h2>
             <div className="modal-buttons">
                 <button className="confirm-button" onClick={onConfirm}>Yes, delete</button>
                 <button className="cancel-button" onClick={onClose}>Cancel</button>
