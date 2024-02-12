@@ -110,7 +110,7 @@ const Notification = () => {
 
                         {currentPage < Math.ceil(allLectures.length / lecturesPerPage) && (
                             <button onClick={handleNextPage} className="next-button">
-                                Next
+                                See More
                             </button>
                         )}
                     </div>

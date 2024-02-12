@@ -64,3 +64,24 @@
 .lecture-details strong {
   font-weight: bold;
 }
+
+.prev-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 100px;
+  height: 39px;
+  margin-top: 25px;
+  margin-right: 70px;
+}
+
+.next-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 140px;
+  height: 39px;
+  margin-top: 25px;
+}
