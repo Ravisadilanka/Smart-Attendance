@@ -1,58 +1,104 @@
-.sidebar{
-    height:455px;
-    width:220px;
-    background-color: #6F7B9A;
-    position: absolute;
-    top: 90px;
-    left: 0;
-    
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    li {
-      margin-bottom: 0px;
-    }
-    
-    a {
-      text-decoration: none;
-      color: #ecf0f1;
-      font-size: 16px;
-      display: block;
-      padding: 10px;
-      padding-bottom:30px;
-      transition: background-color 0.3s;
-    }
-  
-    .sidebar ul li span.icon {
-      margin-right: 30px; 
-    }
-    
-    a:hover {
-      background-color: #2C3268;
-    }
-    
-    .active a {
-      background-color: #2C3268 ;
-    }
-    .notification-count {
-      background-color: red;
-      color: white;
-      font-size: 10px;
-      padding: 1px 6px;
-      border-radius: 50%;
-      position: absolute;
-      right: 20px;
-    }
-    
-    /* Add this to style the link when there is a notification count */
-    .notification-link {
-      position: relative;
-    }
+.sidebar {
+  width: 220px;
+  background-color: #6F7B9A;
+  position: absolute;
+  top: 90px;
+  left: 0;
+  transition: width 0.3s; /* Add transition for smoother resizing */
+}
 
-    .assign{
-      margin-left: -32px;
-      margin-bottom: 30px;
-    }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  padding-bottom: 30px;
+  transition: background-color 0.3s;
+}
+
+.sidebar .sidebar ul li span.icon {
+  margin-right: 30px;
+}
+
+.sidebar a:hover {
+  background-color: #2C3268;
+}
+
+.sidebar .active a {
+  background-color: #2C3268;
+}
+
+.notification-count {
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+}
+
+.notification-link {
+  position: relative;
+}
+
+.assign {
+  margin-left: -32px;
+  margin-bottom: 30px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 992px) {
+  .sidebar {
+      width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      width: 160px;
+  }
+
+  .sidebar a {
+      font-size: 14px;
+  }
+
+  .notification-count {
+      font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+      width: 100%; /* Occupy full width on smaller screens */
+      position: relative; /* Change position to relative */
+      top: 0;
+  }
+
+  .sidebar ul {
+      padding: 10px; /* Add some padding for better spacing */
+  }
+
+  .sidebar li {
+      margin-bottom: 10px; /* Add margin between list items */
+  }
+
+  .sidebar a {
+      padding: 8px; /* Adjust padding for smaller screens */
+      padding-bottom: 20px;
+  }
+
+  .notification-count {
+      right: 10px; /* Adjust position of notification count */
+  }
 }
