@@ -12,6 +12,8 @@ export default function UserProfile() {
     email: '',
     nicNumber: '',
     staffId: '',
+    id: '',
+    Department: ''
   });
 
   const [editMode, setEditMode] = useState(false);
@@ -187,6 +189,30 @@ export default function UserProfile() {
                 className='text-area'
                 placeholder='Staff ID'
                 value={userData.staffId}
+                onChange={handleChange}
+                readOnly={!editMode}
+              />
+            </div> : null}
+            {userData.id ? <div id='input-item'>
+              <input
+                type='text'
+                id='id'
+                required
+                className='text-area'
+                placeholder='Student Id'
+                value={userData.id}
+                onChange={handleChange}
+                readOnly={!editMode}
+              />
+            </div> : null}
+            {userData.Department ? <div id='input-item'>
+              <input
+                type='text'
+                id='Department'
+                required
+                className='text-area'
+                placeholder='Department'
+                value={userData.Department}
                 onChange={handleChange}
                 readOnly={!editMode}
               />

@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { VscCheck, VscClose } from 'react-icons/vsc';
-import { db } from '../../firebase'; // Import the db instance
+import { auth, db } from '../../firebase'; // Import the db instance
 import { ref, onValue } from 'firebase/database';
 import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
 import { CSVLink } from 'react-csv';
 import Sidemenu from '../SideMenu/Sidemenu';
-import './StudentAttendance.css'
+import './StudentAttendance.css';
 
 const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
     const [studentsData, setStudentsData] = useState([]);
-    const { lectureNumber } = useParams(); // Get the lecture number from the URL
+    const { lectureNumber } = useParams();
     const [startingTime, setStartingTime] = useState(null);
     const [endingTime, setEndingTime] = useState(null);
     const [date, setDate] = useState(null);
-
+    const [academicYear, setAcademicYear] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const user = auth.currentUser;
+
                 // Fetch students data
                 const studentsRef = ref(db, 'Students');
                 onValue(studentsRef, (snapshot) => {
@@ -26,7 +28,21 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             id,
                             ...details,
                         }));
-                        setStudentsData(studentsDataArray);
+                        
+                        // Find the student with the current user's email
+                        const currentUserStudent = studentsDataArray.find(student => student.email === user.email);
+                        
+                        if (currentUserStudent) {
+                            // Set the AcademicYear from the current user's student data
+                            setAcademicYear(currentUserStudent.AcademicYear);
+                            console.log(academicYear.split('/')[0]);
+                            
+                            // Filter students based on the AcademicYear
+                            const relevantStudents = studentsDataArray.filter(student => student.AcademicYear === academicYear);
+                            setStudentsData(relevantStudents);
+                        } else {
+                            console.log('Current user not found in students data.');
+                        }
                     } else {
                         console.log('No students data available.');
                     }
@@ -47,7 +63,7 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             console.log('Ending Time:', specificLectureData.endingTime);
                             setStartingTime(specificLectureData.startingTime);
                             setEndingTime(specificLectureData.endingTime);
-                            setDate(specificLectureData.date)
+                            setDate(specificLectureData.date);
                         } else {
                             console.log(`Lecture ${lectureNumber} not found.`);
                         }
@@ -62,7 +78,7 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
         };
 
         fetchData();
-    }, [lectureNumber]);
+    }, [lectureNumber, academicYear]);  // Added user to the dependency array
 
     const csvData = studentsData.map(student => ({
         Name: student.name,
@@ -104,11 +120,13 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             <td>{student.id}</td>
                             <td>{student.Last_attendance_time}</td>
                             <td>
-                                {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime && student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime && student.Last_attendance_time.split(' ')[0] === date ? (
-                                    <VscCheck color="green" />
-                                ) : (
-                                    <VscClose color="red" />
-                                )}
+                                {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
+                                    student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
+                                    student.Last_attendance_time.split(' ')[0] === date ? (
+                                        <VscCheck color="green" />
+                                    ) : (
+                                        <VscClose color="red" />
+                                    )}
                             </td>
                         </tr>
                     ))}

@@ -12,7 +12,7 @@
 }
 
 .table-scroll table {
-    width: 100%;
+    /* width: 100%; */
     border-collapse: collapse;
     table-layout: fixed;
 }
@@ -35,7 +35,7 @@
     background-color: transparent;
     color: #007bff;
     border: none;
-    padding: 5px 10px;
+    padding: 5px 5px;
     cursor: pointer;
     margin-right: 5px;
 }

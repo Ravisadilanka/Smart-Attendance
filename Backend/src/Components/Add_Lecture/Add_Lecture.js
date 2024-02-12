@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { onAuthStateChanged } from 'firebase/auth';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { auth, db } from '../firebase';
+import { auth, db } from '../../firebase';
 import { ref, push, set } from 'firebase/database';
-import Sidemenu from './SideMenu/Sidemenu';
+import Sidemenu from '../SideMenu/Sidemenu';
 import './Add_Lecture.css';
 
 export default function Add_Lecture() {

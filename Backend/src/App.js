@@ -1,5 +1,5 @@
 import './App.css';
-import AddLecture from './Components/Add_Lecture';
+import AddLecture from './Components/Add_Lecture/Add_Lecture';
 import Header from './Components/Header/Header';
 import Signup from './Components/SignUp/SignUp';
 import AddSubject from './Components/Add_Subject';
