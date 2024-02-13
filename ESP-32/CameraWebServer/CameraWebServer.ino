@@ -1,6 +1,8 @@
 #include "esp_camera.h"
 #include <WiFi.h>
 
+
+
 //
 // WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
 //            Ensure ESP32 Wrover Module or other board with PSRAM is selected
@@ -35,8 +37,8 @@
 // ===========================
 // Enter your WiFi credentials
 // ===========================
-const char* ssid = "Sansi";
-const char* password = "Sansi1210";
+const char* ssid = "Galaxy M02d75c";
+const char* password = "1111111@";
 
 void startCameraServer();
 void setupLedFlash(int pin);
@@ -134,6 +136,25 @@ void setup() {
 
   WiFi.begin(ssid, password);
   WiFi.setSleep(false);
+
+   /**WiFiManager wm;
+
+   wm.resetSettings();
+
+    bool res;
+    // res = wm.autoConnect(); // auto generated AP name from chipid
+    // res = wm.autoConnect("AutoConnectAP"); // anonymous ap
+    res = wm.autoConnect("ESP32","password"); // password protected ap
+
+    if(!res) {
+        Serial.println("Failed to connect");
+        // ESP.restart();
+    } 
+    else {
+        //if you get here you have connected to the WiFi    
+        Serial.println("connected...yeey :)");
+    }
+**/
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
