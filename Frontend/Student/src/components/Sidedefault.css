@@ -1,0 +1,38 @@
+.sidebar{
+  height:574px;
+  width:230px;
+  background-color: #151833;
+  position: absolute;
+  top: 115px;
+  left: 0;
+  
+  ul {
+    list-style: none;
+    padding: 50;
+  }
+  
+  li {
+    margin-bottom: 30px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 19px;
+    display: block;
+    padding: 20px;
+    transition: background-color 0.2s;
+  }
+
+  .sidebar ul li span.icon {
+    margin-right: 30px; 
+  }
+  
+  a:hover {
+    background-color: #2C3268 ;
+  }
+  
+  .active a {
+    background-color: #2C3268 ;
+  }
+}

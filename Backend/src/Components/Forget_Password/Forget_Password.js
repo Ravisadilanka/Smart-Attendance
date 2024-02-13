@@ -22,7 +22,7 @@ export default function ForgetPassword() {
       setSuccessMessage('');
       console.error('Error sending password reset email:', error);
     }
-};
+  };
 
   const handleSignUp = () => {
     navigate('/');
@@ -33,7 +33,6 @@ export default function ForgetPassword() {
       <div className="register">
         <div className="col-1">
           <h1>Forget Password</h1>
-
           <form id='form' className='flex flex-col forgetpw'>
             <input
               type='email'
@@ -42,14 +41,12 @@ export default function ForgetPassword() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <span className="error-message">{errorMessage}</span>
-            <span className="success-message">{successMessage}</span>
-
-            <button className='btn' type="button" onClick={handleForgetPassword}>
+            <span className={errorMessage ? "error-message" : ""}>{errorMessage}</span>
+            <span className={successMessage ? "success-message" : ""}>{successMessage}</span>
+            <button className='btn1' type="button" onClick={handleForgetPassword}>
               Send Password Reset Email
             </button>
-
-            <button className='btn' onClick={handleSignUp}>
+            <button className='btn2' onClick={handleSignUp}>
               Sign Up
             </button>
           </form>

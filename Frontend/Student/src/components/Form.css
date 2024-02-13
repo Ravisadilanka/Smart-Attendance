@@ -1,0 +1,27 @@
+.col-1-log{
+    margin-top: -120px;
+    padding: 3em 0;
+
+}
+
+.additional-links {
+    margin-top: 10px;
+}
+
+.additional-links a {
+    text-decoration: none;
+    color: #3498db;
+    
+}
+
+.additional-links span {
+    margin: 3 5px;
+    color: #777;
+}
+
+.image {
+    max-width: 200%;
+    margin-bottom: 175px;
+    margin-top: 0px;
+    margin-left: 0px;
+  }

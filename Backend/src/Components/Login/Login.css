@@ -6,7 +6,7 @@
     border-radius: 30px;
     background-color: #dce7ee;
     margin: 130px; /* Center the container horizontally */
-    max-height: 470px;
+    max-height: 300px;
 }
 
 .flex{
@@ -17,6 +17,9 @@
 .col-1-log{
     margin: auto;
     padding: 3em 0;
+    margin-top: -80px;
+    background-size: 100px;
+    
 }
 
 .additional-links {
@@ -32,3 +35,10 @@
     margin: 0 5px;
     color: #777;
 }
+.image {
+    max-width: 100%;
+    width: 1530px;
+    margin-bottom: 20px;
+    margin-top: -450px;
+    margin-left: 0px;
+  }

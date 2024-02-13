@@ -208,7 +208,7 @@ const ViewStaff = () => {
                         <tbody>
                             {usersWithStaffId.map(user => (
                                 <tr key={user.email}>
-                                    <td className="name-column" style={{ width: '100px' }}>{user.name}</td>
+                                    <td className="name-column">{user.name}</td>
                                     <td className="email-column">{user.email}</td>
                                     <td className="nic-column">{user.nicNumber}</td>
                                     <td className="staff-id-column">{user.staffId}</td>

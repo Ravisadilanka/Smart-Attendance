@@ -15,7 +15,6 @@ const Sidemenu = () => {
   const [upcomingLecturesCount, setUpcomingLecturesCount] = useState(0);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
-
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
@@ -39,6 +38,7 @@ const Sidemenu = () => {
             const userRef = ref(db, `users/${user.uid}`);
             const snapshot = await get(userRef);
             const userDataFromFirebase = snapshot.val();
+
             setUserData(userDataFromFirebase || {});
           } catch (error) {
             console.error('Error fetching user data:', error);
@@ -93,7 +93,7 @@ const Sidemenu = () => {
     <div className='sidebar'>
       <ul>
         <li className={activeLink === 'dashboard' ? 'active' : ''}>
-          <Link to={userData.adminId ? "/admin_dashboard" : "/dashboard"} onClick={() => handleLinkClick('dashboard')}>
+          <Link to={userData.adminId ? "/admin_dashboard" : userData.staffId ? "/dashboard" : "/student_dashboard"} onClick={() => handleLinkClick('dashboard')}>
             <span><MdOutlineDashboard /></span> {' '} Dashboard</Link>
         </li>
         <li className={activeLink === 'notifications' ? 'active' : ''}>
@@ -108,7 +108,7 @@ const Sidemenu = () => {
           </Link>
         </li>
         <li>
-          <Link onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
+          <Link className='assign' onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
         </li>
       </ul>
     </div>

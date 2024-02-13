@@ -1,0 +1,43 @@
+/* Customize modal styles */
+.modal-title {
+    margin-bottom: 20px;
+    color: #333; /* Adjust text color */
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirm-button,
+.cancel-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+    background-color: #1890ff ; /* Red color for delete */
+    color: #fff;
+}
+
+.cancel-button {
+    background-color: #cbcccd; /* Blue color for cancel */
+    color: #fff;
+}
+
+.confirm-button:hover{
+    background-color: #023668;
+    opacity: 0.8;
+}
+
+.cancel-button:hover {
+    background-color: #cbcccd;
+    opacity: 0.8;
+
+}

@@ -1,9 +1,10 @@
 .register2 {
   min-width: 400px;
-  background-color: #2C326817;
-  border-radius: 60px;
+  background-color: #9fb4d0;
+  border-radius: 10px;
   margin-top: 120px;
   border: 1px solid #141415;
+  padding: 20px;
 }
 
 .col-1 {
@@ -11,7 +12,7 @@
  flex-direction: column;
  align-items: center;
  justify-content: center;
- padding: 18px 32px 0px 32px;
+ padding: 13px 32px 0px 32px;
  margin-top: 30px;
 }
 
@@ -21,10 +22,11 @@
 
 .col-1 input {
  border-radius: 12px;
- padding: 6px 8px;
+ padding: 9px 10px;
  border: none;
  width: 100%;
- margin-left: 80px;
+ margin-left: 40px;
+ padding-right: 80px;
 }
 
 .col-1 input:focus {
@@ -48,14 +50,14 @@
 #form > .userprof-btn{
   background-color: #2C3268;
   color: #e9ecef;
-  font-size: 1em;
+  font-size: 1.25em;
   cursor: pointer;
   border-radius: 20px ;
   transition: background-color 0.3s;
-  width: 60%;
+  width: 30%;
   border: 1px solid #e9ecef;
-  padding: .6em .1em;
-  margin-left: 120px;
+  padding: .6em .9em;
+  margin-left: 100px;
  
   
   }
@@ -68,6 +70,7 @@
 #input-item{
   width:100%
 }
+
 .success-message {
   color: #155724;  /* Bootstrap success color */
   background-color: #d4edda;  /* Bootstrap success background color */
@@ -75,7 +78,7 @@
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
-}
+}                                           
 
 .error-message {
   color: #721c24;  /* Bootstrap error color */
@@ -84,4 +87,8 @@
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
+}
+
+.flex{
+  gap: 2em;
 }

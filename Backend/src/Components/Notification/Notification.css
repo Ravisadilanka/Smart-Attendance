@@ -1,0 +1,87 @@
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #d4e1f2;
+  width: 700px;
+  margin-left: 180px;
+  height: 380px;
+  margin-top: 50px;
+}
+
+.notification-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.loading-message,
+.error-message {
+  font-size: 18px;
+  color: #555;
+}
+
+.upcoming-lectures-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lecture-item {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 500px;
+}
+
+.lecture-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lecture-info,
+.lecture-details {
+  flex: 1;
+}
+
+.lecture-info p,
+.lecture-details p {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.lecture-info strong,
+.lecture-details strong {
+  font-weight: bold;
+}
+
+.prev-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 100px;
+  height: 39px;
+  margin-top: 25px;
+  margin-right: 70px;
+}
+
+.next-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 140px;
+  height: 39px;
+  margin-top: 25px;
+}
