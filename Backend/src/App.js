@@ -5,7 +5,7 @@ import Signup from './Components/SignUp/SignUp';
 import AddSubject from './Components/Add_Subject';
 import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 import Dashboard from './Components/Dashboard/Dashboard';
-import SelectSubject from './Components/Select_a_Subject';
+import SelectSubject from './Components/Select_a_Subject/Select_a_Subject';
 import Attendance from './Components/View_attendance/View_attendance';
 import Footer from './Components/Footer';
 import DashboardNewUser from './Components/Dashboard_New_User';
