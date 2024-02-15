@@ -20,7 +20,7 @@ export default function Select_a_Subject() {
   };
 
   const handleCardClick = (lectureNumber) => {
-    navigate(`/Attendance/${lectureNumber}`);
+    navigate(`/Attendance/${subjectID}/lecture/${lectureNumber}`);
   };
   
   const handleDeleteLecture = async (lectureNumber) => {

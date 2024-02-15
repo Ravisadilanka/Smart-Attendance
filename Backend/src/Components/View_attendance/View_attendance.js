@@ -1,23 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { VscCheck, VscClose } from 'react-icons/vsc';
-import { db } from '../../firebase'; // Import the db instance
+import { db } from '../../firebase';
 import { ref, onValue } from 'firebase/database';
-import { useParams } from 'react-router-dom'; // Import useParams from react-router-dom
+import { useParams } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
 import Sidemenu from '../SideMenu/Sidemenu';
-import './View_attendance.css'
+import './View_attendance.css';
 
 const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
     const [studentsData, setStudentsData] = useState([]);
-    const { lectureNumber } = useParams(); // Get the lecture number from the URL
+    const { lectureNumber, subjectID } = useParams();
     const [startingTime, setStartingTime] = useState(null);
     const [endingTime, setEndingTime] = useState(null);
     const [date, setDate] = useState(null);
-
+    const [desiredYear, setDesiredYear] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                // Fetch relevant year based on subjectId
+                const subjectsRef = ref(db, 'subjects');
+                onValue(subjectsRef, (snapshot) => {
+                    if (snapshot.exists()) {
+                        const subjectsData = snapshot.val();
+                        const subjectDetails = Object.values(subjectsData)?.find(subject => subject.subjectID === subjectID);
+    
+                        if (subjectDetails) {
+                            setDesiredYear(subjectDetails.Year);
+                        } else {
+                            console.log(`Subject ${subjectID} not found.`);
+                        }
+                    } else {
+                        console.log('No subjects data available.');
+                    }
+                });
+
                 // Fetch students data
                 const studentsRef = ref(db, 'Students');
                 onValue(studentsRef, (snapshot) => {
@@ -26,7 +43,11 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             id,
                             ...details,
                         }));
-                        setStudentsData(studentsDataArray);
+
+                        // Filter students based on AcademicYear
+                        const filteredStudents = studentsDataArray.filter(student => student.AcademicYear.split('/')[0] === desiredYear);
+
+                        setStudentsData(filteredStudents);
                     } else {
                         console.log('No students data available.');
                     }
@@ -47,7 +68,7 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             console.log('Ending Time:', specificLectureData.endingTime);
                             setStartingTime(specificLectureData.startingTime);
                             setEndingTime(specificLectureData.endingTime);
-                            setDate(specificLectureData.date)
+                            setDate(specificLectureData.date);
                         } else {
                             console.log(`Lecture ${lectureNumber} not found.`);
                         }
@@ -62,7 +83,7 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
         };
 
         fetchData();
-    }, [lectureNumber]);
+    }, [lectureNumber, subjectID, desiredYear]);
 
     const csvData = studentsData.map(student => ({
         Name: student.name,
