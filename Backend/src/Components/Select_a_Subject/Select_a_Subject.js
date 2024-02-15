@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { VscError } from 'react-icons/vsc';
-import { db, auth } from '../firebase';
+import { db, auth } from '../../firebase';
 import { ref, onValue, remove } from 'firebase/database';
-import ConfirmationModal from '../Components/ConfirmationModal/ConfirmationModal';
+import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { useNavigate, useParams } from 'react-router-dom';
-import Sidemenu from './SideMenu/Sidemenu';
+import Sidemenu from '../SideMenu/Sidemenu';
 import { onAuthStateChanged } from 'firebase/auth';
 import './Select_Subject.css';
 
@@ -20,11 +20,12 @@ export default function Select_a_Subject() {
   };
 
   const handleCardClick = (lectureNumber) => {
-    navigate(`/Attendance/${lectureNumber}`);
+    navigate(`/Attendance/${subjectID}/lecture/${lectureNumber}`);
   };
   
-  const handleDeleteLecture = async (lectureID) => {
+  const handleDeleteLecture = async (lectureNumber) => {
     const user = auth.currentUser;
+    console.log(lectureNumber)
 
     if (!user || !user.uid) {
       console.error('User not logged in.');
@@ -39,14 +40,14 @@ export default function Select_a_Subject() {
           snapshot.forEach((childSnapshot) => {
             const lecture = childSnapshot.val();
 
-            if (user.uid === lecture.userId && lecture.lectureID === lectureID) {
+            if (user.uid === lecture.userId && lecture.lectureNumber === lectureNumber) {
               remove(childSnapshot.ref);
               console.log('Lecture deleted successfully.');
             }
           });
 
           setLectures((prevLectures) =>
-            prevLectures.filter((lecture) => lecture.lectureID !== lectureID)
+            prevLectures.filter((lecture) => lecture.lectureNumber !== lectureNumber)
           );
         }
       });
@@ -124,7 +125,7 @@ export default function Select_a_Subject() {
                   <span>Lecture Number: {lecture.lectureNumber}</span>
                 </div>
                 <span className='icon-container'>
-                  <VscError onClick={() => handleConfirmDelete(lecture.lectureID)} />
+                  <VscError onClick={() => handleConfirmDelete(lecture.lectureNumber)} />
                 </span>
               </div>
             ))}
