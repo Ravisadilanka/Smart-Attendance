@@ -130,8 +130,8 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
         'Registration Number': student.id,
         'Last Attendance Time': student.Last_attendance_time,
         'Attendance Status': student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
-    student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
-    student.Last_attendance_time?.split(' ')[0] === date ? 'Present' : 'Absent',
+            student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
+            student.Last_attendance_time?.split(' ')[0] === date ? 'Present' : 'Absent',
     }));
 
     const csvHeaders = [
@@ -251,13 +251,13 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                                 <td>{student.id}</td>
                                 <td>{student.Last_attendance_time}</td>
                                 <td>
-                                {student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
-    student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
-    student.Last_attendance_time?.split(' ')[0] === date ? (
-    <VscCheck color='green' />
-) : (
-    <VscClose color='red' />
-)}
+                                    {student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
+                                        student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
+                                        student.Last_attendance_time?.split(' ')[0] === date ? (
+                                        <VscCheck color='green' />
+                                    ) : (
+                                        <VscClose color='red' />
+                                    )}
                                 </td>
                             </tr>
                         ))
