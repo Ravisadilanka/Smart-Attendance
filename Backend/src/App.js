@@ -37,7 +37,7 @@ function App() {
           <Route path={`/Select_a_Subject/:subjectID`} element={<SelectSubject />} />
           <Route path={`/ViewSubject/:subjectID`} element={<ViewSubject />} />
           <Route path={`/Attendance/:subjectID/lecture/:lectureNumber`} element={<Attendance />} />
-          <Route path={`/StudentAttendance/:lectureNumber`} element={<StudentAttendance />} />
+          <Route path={`/StudentAttendance/:subjectID/lecture/:lectureNumber`} element={<StudentAttendance />} />
           <Route path='/Dashboard_New_User' element={<DashboardNewUser />} />
           <Route path='/forgot_password' element={<ForgotPassword />} />
           <Route path='/notifications' element={<Notification />} />

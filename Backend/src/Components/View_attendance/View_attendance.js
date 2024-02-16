@@ -15,7 +15,6 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
     const [endingTime, setEndingTime] = useState(null);
     const [date, setDate] = useState(null);
     const [desiredYear, setDesiredYear] = useState(null);
-    const [endTime, setEndTime] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -130,12 +129,9 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
         Name: student.name,
         'Registration Number': student.id,
         'Last Attendance Time': student.Last_attendance_time,
-        'Attendance Status':
-            student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
-                student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
-                student.Last_attendance_time.split(' ')[0] === date
-                ? 'Present'
-                : 'Absent',
+        'Attendance Status': student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
+    student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
+    student.Last_attendance_time?.split(' ')[0] === date ? 'Present' : 'Absent',
     }));
 
     const csvHeaders = [
@@ -255,13 +251,13 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                                 <td>{student.id}</td>
                                 <td>{student.Last_attendance_time}</td>
                                 <td>
-                                    {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
-                                        student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
-                                        student.Last_attendance_time.split(' ')[0] === date ? (
-                                        <VscCheck color='green' />
-                                    ) : (
-                                        <VscClose color='red' />
-                                    )}
+                                {student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
+    student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
+    student.Last_attendance_time?.split(' ')[0] === date ? (
+    <VscCheck color='green' />
+) : (
+    <VscClose color='red' />
+)}
                                 </td>
                             </tr>
                         ))
