@@ -147,8 +147,8 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                     name: student.name,
                     Last_Attendance_time: student.Last_attendance_time,
                     attendanceStatus:
-                        student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
-                            student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
+                        student.Last_attendance_time.split(' ')[1]?.substring(0, 5) > startingTime &&
+                            student.Last_attendance_time.split(' ')[1]?.substring(0, 5) < endingTime &&
                             student.Last_attendance_time.split(' ')[0] === date
                             ? 'Present'
                             : 'Absent',
@@ -261,8 +261,8 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                                 <td>{student.id}</td>
                                 <td>{student.Last_Attendance_time}</td>
                                 <td>
-                                    {student.Last_Attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
-                                        student.Last_Attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
+                                    {student.Last_Attendance_time.split(' ')[1]?.substring(0, 5) > startingTime &&
+                                        student.Last_Attendance_time.split(' ')[1]?.substring(0, 5) < endingTime &&
                                         student.Last_Attendance_time.split(' ')[0] === date ? (
                                         <VscCheck color='green' />
                                     ) : (
