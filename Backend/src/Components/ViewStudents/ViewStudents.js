@@ -4,11 +4,13 @@ import Sidemenu from "../SideMenu/Sidemenu";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { get, ref, remove, set } from "firebase/database";
 import { auth, db } from "../../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { getDatabase, child } from "firebase/database";
 import { useParams } from "react-router-dom";
+import './ViewStudents.css'
 
 const ViewStudents = () => {
+    const [users, setUsers] = useState([]);
     const { academicYear } = useParams()
     const [students, setStudents] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +24,16 @@ const ViewStudents = () => {
     });
 
     const decodedAcademicYear = decodeURIComponent(academicYear);
+    const [isAddLecturerModalOpen, setIsAddLecturerModalOpen] = useState(false);
+    const [newStudent, setNewStudent] = useState({
+        name: "",
+        email:"",
+        academicYear: "",
+        department: "",
+        studentId: "",
+    });
+    const [isAddLecturerFieldsVisible, setIsAddLecturerFieldsVisible] = useState(false);
+    const [lecturerError, setLecturerError] = useState('')
 
     useEffect(() => {
         const fetchStudentsData = async () => {
@@ -129,6 +141,50 @@ const ViewStudents = () => {
         }
     };
 
+    const openAddLecturerModal = () => {
+        setIsAddLecturerModalOpen(true);
+        setNewStudent({
+            name: "",
+            email: "",
+            nicNumber: "",
+            staffId: "",
+        });
+        setIsAddLecturerFieldsVisible(true);
+    };
+
+    const handleAddLecturer = async () => {
+        try {
+            const { user } = await createUserWithEmailAndPassword(auth, newStudent.email, "123456");
+
+            await updateProfile(user, {
+                displayName: newStudent.name,
+            });
+
+            const usersRef = ref(db, `Students/${newStudent.studentId}`);
+            await set(usersRef, {
+                name: newStudent.name,
+                email: newStudent.email,
+                AcademicYear: newStudent.academicYear,
+                Department: newStudent.department,
+                id: newStudent.studentId
+            });
+
+            setUsers(prevUsers => [
+                ...prevUsers,
+                {
+                    ...newStudent,
+                    id: newStudent.id,
+                },
+            ]);
+        } catch (error) {
+            console.error('Error adding lecturer:', error.message);
+            setLecturerError(error.message)
+        } finally {
+            setIsAddLecturerFieldsVisible(false);
+            setIsAddLecturerModalOpen(false);
+        }
+    };
+
     return (
         <div className="table-wrapper">
             <Sidemenu />
@@ -173,6 +229,9 @@ const ViewStudents = () => {
                     </table>
                 </div>
             </div>
+            <button type="button" className='bottom-button1' onClick={openAddLecturerModal}>
+                Add Student
+            </button>
             <ConfirmationModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
@@ -222,6 +281,53 @@ const ViewStudents = () => {
                         <button type="button" onClick={() => setEditingStudent(null)}>
                             Cancel
                         </button>
+                    </form>
+                </div>
+            )}
+            {isAddLecturerFieldsVisible && (
+                <div className={`add-lecturer-modal`}>
+                    <h2>Add Student</h2>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            value={newStudent.name}
+                            onChange={(e) => setNewStudent({ ...newStudent, name: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            value={newStudent.email}
+                            onChange={(e) => setNewStudent({ ...newStudent, email: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Department"
+                            value={newStudent.department}
+                            onChange={(e) => setNewStudent({ ...newStudent, department: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Academic Year"
+                            value={newStudent.academicYear}
+                            onChange={(e) => setNewStudent({ ...newStudent, academicYear: e.target.value })}
+                        />
+                        <input
+                            type="text"
+                            placeholder="Student ID"
+                            value={newStudent.studentId}
+                            onChange={(e) => setNewStudent({ ...newStudent, studentId: e.target.value })}
+                        />
+                        <button type="button" onClick={handleAddLecturer}>
+                            Add Student
+                        </button>
+                        <button type="button" onClick={() => {
+                            setIsAddLecturerModalOpen(false);
+                            setIsAddLecturerFieldsVisible(false); // Add this line to hide the fields
+                        }}>
+                            Cancel
+                        </button>
+
                     </form>
                 </div>
             )}
