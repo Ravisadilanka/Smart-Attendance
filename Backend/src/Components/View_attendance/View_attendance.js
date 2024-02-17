@@ -249,11 +249,12 @@ const Attendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             <tr key={student.id}>
                                 <td>{student.name}</td>
                                 <td>{student.id}</td>
-                                <td>{student.Last_attendance_time}</td>
+                                <td>{student.Last_Attendance_time || 'N/A'}</td>
                                 <td>
-                                    {student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) > startingTime &&
-                                        student.Last_attendance_time?.split(' ')[1]?.substring(0, 5) < endingTime &&
-                                        student.Last_attendance_time?.split(' ')[0] === date ? (
+                                    {student.Last_Attendance_time &&
+                                    student.Last_Attendance_time.split(' ')[1]?.substring(0, 5) > startingTime &&
+                                    student.Last_Attendance_time.split(' ')[1]?.substring(0, 5) < endingTime &&
+                                    student.Last_Attendance_time.split(' ')[0] === date ? (
                                         <VscCheck color='green' />
                                     ) : (
                                         <VscClose color='red' />

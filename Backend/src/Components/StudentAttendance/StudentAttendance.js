@@ -113,7 +113,7 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
         };
 
         fetchData();
-    }, [lectureNumber, subjectID, studentsData]);
+    }, [lectureNumber, subjectID]);
 
     const csvData = studentsData.map(student => ({
         Name: student.name,
@@ -241,11 +241,12 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
                             <tr key={student.id}>
                                 <td>{student.name}</td>
                                 <td>{student.id}</td>
-                                <td>{student.Last_attendance_time}</td>
+                                <td>{student.Last_attendance_time || 'N/A'}</td>
                                 <td>
-                                    {student.Last_attendance_time.split(' ')[1].substring(0, 5) > startingTime &&
-                                        student.Last_attendance_time.split(' ')[1].substring(0, 5) < endingTime &&
-                                        student.Last_attendance_time.split(' ')[0] === date ? (
+                                    {student.Last_attendance_time &&
+                                    student.Last_attendance_time.split(' ')[1]?.substring(0, 5) > startingTime &&
+                                    student.Last_attendance_time.split(' ')[1]?.substring(0, 5) < endingTime &&
+                                    student.Last_attendance_time.split(' ')[0] === date ? (
                                         <VscCheck color='green' />
                                     ) : (
                                         <VscClose color='red' />
