@@ -1,117 +1,87 @@
 .notification-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto; /* Center horizontally */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #d4e1f2;
-    max-width: 700px; /* Set maximum width for larger screens */
-    width: 100%; /* Ensure full width for smaller screens */
-    margin-top: 50px;
-    box-sizing: border-box; /* Ensure padding is included in width */
-  }
-  
-  /* Styles for notification title */
-  .notification-title {
-    font-size: calc(1rem + 0.6vmin); /* Adjust font size dynamically for responsiveness */
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center; /* Center text */
-  }
-  
-  /* Styles for loading and error messages */
-  .loading-message,
-  .error-message {
-    font-size: calc(0.8rem + 0.3vmin); /* Adjust font size dynamically for responsiveness */
-    color: #555;
-    text-align: center; /* Center text */
-  }
-  
-  /* Styles for upcoming lectures list */
-  .upcoming-lectures-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%; /* Ensure full width */
-  }
-  
-  /* Styles for lecture items */
-  .lecture-item {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    width: 100%; /* Adjust width to 100% for smaller screens */
-    box-sizing: border-box; /* Ensure padding is included in width */
-  }
-  
-  /* Hover effect for lecture items */
-  .lecture-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Styles for lecture information and details */
-  .lecture-info,
-  .lecture-details {
-    flex: 1;
-  }
-  
-  /* Styles for paragraph inside lecture info and details */
-  .lecture-info p,
-  .lecture-details p {
-    margin-bottom: 8px;
-    color: #444;
-  }
-  
-  /* Additional styles for strong elements */
-  .lecture-info strong,
-  .lecture-details strong {
-    font-weight: bold;
-  }
-  
-  /* Media queries for responsiveness */
-  @media only screen and (max-width: 768px) {
-    /* Adjust padding for notification container */
-    .notification-container {
-      padding: 10px;
-    }
-  
-    /* Change layout to column for upcoming lectures list and lecture items */
-    .upcoming-lectures-list,
-    .lecture-item {
-      flex-direction: column;
-    }
-  
-    /* Ensure equal-width columns on smaller screens */
-    .lecture-info,
-    .lecture-details {
-      flex: 1 1 auto;
-    }
-  
-    /* Adjust font size for paragraph inside lecture info and details */
-    .lecture-info p,
-    .lecture-details p {
-      font-size: calc(0.7rem + 0.2vmin);
-    }
-  }
-  
-  /* Media queries for even smaller screens */
-  @media only screen and (max-width: 480px) {
-    /* Further adjust font size for notification title */
-    .notification-title {
-      font-size: calc(0.9rem + 0.4vmin);
-    }
-  
-    /* Reduce padding for lecture items */
-    .lecture-item {
-      padding: 8px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #d4e1f2;
+  width: 700px;
+  margin-left: 180px;
+  height: 380px;
+  margin-top: 50px;
+}
+
+.notification-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.loading-message,
+.error-message {
+  font-size: 18px;
+  color: #555;
+}
+
+.upcoming-lectures-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lecture-item {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 500px;
+}
+
+.lecture-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lecture-info,
+.lecture-details {
+  flex: 1;
+}
+
+.lecture-info p,
+.lecture-details p {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.lecture-info strong,
+.lecture-details strong {
+  font-weight: bold;
+}
+
+.prev-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 100px;
+  height: 39px;
+  margin-top: 25px;
+  margin-right: 70px;
+}
+
+.next-button{
+  color: white;
+  font-size: 18px;
+  background-color: #2C3268;
+  border-radius: 15px;
+  width: 140px;
+  height: 39px;
+  margin-top: 25px;
+}
