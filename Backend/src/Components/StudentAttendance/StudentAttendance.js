@@ -41,6 +41,7 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
 
                             // Filter students based on the AcademicYear
                             const relevantStudents = studentsDataArray.filter(student => student.AcademicYear === academicYear);
+                            console.log(relevantStudents)
                             setStudentsData(relevantStudents);
                         } else {
                             console.log('Current user not found in students data.');
@@ -113,7 +114,7 @@ const StudentAttendance = ({ lectureStartingTime, lectureEndingTime }) => {
         };
 
         fetchData();
-    }, [lectureNumber, subjectID]);
+    }, [lectureNumber, subjectID, studentsData]);
 
     const csvData = studentsData.map(student => ({
         Name: student.name,
