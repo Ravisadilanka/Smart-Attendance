@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail} from 'firebase/auth';
 import { confirmPasswordReset as firebaseConfirmPasswordReset } from 'firebase/auth';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase} from 'firebase/database';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 
 const app = initializeApp({
@@ -50,6 +51,7 @@ const confirmPasswordReset = async (oobCode, newPassword) => {
 };
 
 const db = getDatabase(app);
+const storage = getStorage(app);
 
 
-export { auth, signIn, signOut, getCurrentUser, resetPassword, confirmPasswordReset, db };
+export { auth, signIn, signOut, getCurrentUser, resetPassword, confirmPasswordReset, db, storage, ref, uploadBytes };
