@@ -1,10 +1,11 @@
 .register2 {
   min-width: 400px;
-  background-color: #9fb4d0;
-  border-radius: 10px;
-  margin-top: 120px;
+  background-color: #d4e1f2;
+  border-radius: 50px;
+  margin-top: 155px;
   border: 1px solid #141415;
   padding: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 .col-1 {
@@ -24,6 +25,7 @@
  border-radius: 12px;
  padding: 9px 10px;
  border: none;
+ border: 1px solid #bfc0c3;
  width: 100%;
  margin-left: 40px;
  padding-right: 80px;
@@ -31,6 +33,7 @@
 
 .col-1 input:focus {
  outline: none;
+ border-color: #2C3268;
 }
 
 /* .col-1 label {
@@ -57,10 +60,14 @@
   width: 30%;
   border: 1px solid #e9ecef;
   padding: .6em .9em;
-  margin-left: 100px;
- 
-  
-  }
+  margin-left: 170px;     
+  width: 50%; 
+}
+
+#form > .userprof-btn:hover{
+  background-color: #1f2536
+}
+
 .form{
   display: flex;
   flex-direction: column;

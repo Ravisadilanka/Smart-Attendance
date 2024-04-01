@@ -9,10 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 export default function UserProfile() {
   const [userData, setUserData] = useState({
     name: '',
-    email: '',
     nicNumber: '',
-    staffId: '',
-    id: '',
     Department: ''
   });
 
@@ -164,8 +161,6 @@ export default function UserProfile() {
                 className='text-area'
                 placeholder='Email'
                 value={userData.email}
-                onChange={handleChange}
-                readOnly={!editMode}
               />
             </div> : null}
 
@@ -189,8 +184,6 @@ export default function UserProfile() {
                 className='text-area'
                 placeholder='Staff ID'
                 value={userData.staffId}
-                onChange={handleChange}
-                readOnly={!editMode}
               />
             </div> : null}
             {userData.id ? <div id='input-item'>
@@ -201,8 +194,6 @@ export default function UserProfile() {
                 className='text-area'
                 placeholder='Student Id'
                 value={userData.id}
-                onChange={handleChange}
-                readOnly={!editMode}
               />
             </div> : null}
             {userData.Department ? <div id='input-item'>

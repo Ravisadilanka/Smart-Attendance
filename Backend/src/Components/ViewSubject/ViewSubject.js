@@ -13,7 +13,7 @@ const ViewSubject = () => {
 
 
     const handleCardClick = (lectureNumber) => {
-        navigate(`/StudentAttendance/${lectureNumber}`);
+        navigate(`/StudentAttendance/${subjectID}/lecture/${lectureNumber}`);
       };
 
     useEffect(() => {
