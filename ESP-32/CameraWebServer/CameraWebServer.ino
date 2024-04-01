@@ -1,16 +1,8 @@
-#include "esp_camera.h"
-#include <WiFi.h>
+#include "esp_camera.h"   // specific to the ESP32 platform and provides functionalities related to camera handling
+#include <WiFi.h>   //It enables the use of Wi-Fi functionalities on the ESP32
 
 
 
-//
-// WARNING!!! PSRAM IC required for UXGA resolution and high JPEG quality
-//            Ensure ESP32 Wrover Module or other board with PSRAM is selected
-//            Partial images will be transmitted if image exceeds buffer size
-//
-//            You must select partition scheme from the board menu that has at least 3MB APP space.
-//            Face Recognition is DISABLED for ESP32 and ESP32-S2, because it takes up from 15 
-//            seconds to process single frame. Face Detection is ENABLED if PSRAM is enabled as well
 
 // ===================
 // Select camera model
@@ -32,7 +24,9 @@
 //#define CAMERA_MODEL_ESP32S3_CAM_LCD
 //#define CAMERA_MODEL_DFRobot_FireBeetle2_ESP32S3 // Has PSRAM
 //#define CAMERA_MODEL_DFRobot_Romeo_ESP32S3 // Has PSRAM
-#include "camera_pins.h"
+
+
+#include "camera_pins.h"    // this is the necessary file to run the correcr correct 
 
 // ===========================
 // Enter your WiFi credentials
@@ -48,7 +42,7 @@ void setup() {
   Serial.setDebugOutput(true);
   Serial.println();
 
-  camera_config_t config;
+  camera_config_t config;              //these are camera parameters , to store various type of parameters
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer = LEDC_TIMER_0;
   config.pin_d0 = Y2_GPIO_NUM;
