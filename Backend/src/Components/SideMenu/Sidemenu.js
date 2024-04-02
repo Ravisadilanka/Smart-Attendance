@@ -107,6 +107,11 @@ const Sidemenu = () => {
             <span><CgProfile /></span>User Profile
           </Link>
         </li>
+        <li className={activeLink === 'profile' ? 'active' : ''}>
+          <Link to="/analytics" onClick={() => handleLinkClick('profile')}>
+            <span><CgProfile /></span>Analytics
+          </Link>
+        </li>
         <li>
           <Link className='assign' onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
         </li>

@@ -21,6 +21,9 @@ import ViewStudents from './Components/ViewStudents/ViewStudents';
 import StudentDashboard from './Components/Student_Dashboard/StudentDashboard';
 import ViewSubject from './Components/ViewSubject/ViewSubject';
 import StudentAttendance from './Components/StudentAttendance/StudentAttendance';
+import Analytics from './Components/Analytics/Analytics';
+import Stat from './Components/Stats/stat';
+
 
 function App() {
   return (
@@ -48,6 +51,8 @@ function App() {
           <Route path="/academic_years" element={<AccademicYears />} />
           <Route path="/academic_years/:academicYear" element={<ViewStudents />} />
           <Route path="/student_dashboard" element={<StudentDashboard />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path={`/analytics/:subjectID`} element={<Stat />} />
         </Routes>
       </div>
     </Router>
