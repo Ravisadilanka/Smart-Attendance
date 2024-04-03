@@ -1,30 +1,19 @@
 import { useState, useEffect } from 'react';
-import { VscError } from 'react-icons/vsc';
 import { db, auth } from '../../firebase';
 import { ref, onValue, remove, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import Sidemenu from '../SideMenu/Sidemenu';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
-import { onAuthStateChanged } from 'firebase/auth';
 
 export default function Dashboard() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [subjects, setSubjects] = useState([]);
-    const [subjectToDelete, setSubjectToDelete] = useState(null); // New state
     const navigate = useNavigate();
 
     const handleClick = () => {
         navigate('/Add_Subject');
     };
 
-    const handleCardClick = (event, subjectID) => {
-
-        // Prevent the event from propagating to the parent container
-        event.stopPropagation();
-
-        // Redirect to the Add_Lecture route with the selected subjectID
+    const handleCardClick = (subjectID) => {
         navigate(`/analytics/${subjectID}`);
-
     };
 
     const getSubjectKeys = async () => {
@@ -105,56 +94,34 @@ export default function Dashboard() {
         }
     };
 
-    const handleConfirmDelete = (subjectID) => {
-        setSubjectToDelete(subjectID);
-        setIsModalOpen(true);
-    };
-
-    const confirmDelete = () => {
-        if (subjectToDelete) {
-            // Call your delete function here
-            handleDeleteSubject(subjectToDelete);
-            // Reset subjectToDelete state
-            setSubjectToDelete(null);
-        }
-        setIsModalOpen(false); // Close the modal
-    };
-
-    const handleCloseModal = () => {
-        setSubjectToDelete(null);
-        setIsModalOpen(false);
-    };
-
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const unsubscribe = onAuthStateChanged(auth, (user) => {
-                    if (!user) {
-                        console.log('User is not logged in.');
-                        navigate('/l');
-                    } else {
-                        const subjectsRef = ref(db, 'subjects');
+                const user = auth.currentUser;
 
-                        onValue(subjectsRef, (snapshot) => {
-                            const subjectsData = [];
+                if (!user) {
+                    console.log('User is not logged in.');
+                    navigate('/login');
+                } else {
+                    const subjectsRef = ref(db, 'subjects');
 
-                            if (snapshot.exists()) {
-                                snapshot.forEach((childSnapshot) => {
-                                    const subject = childSnapshot.val();
+                    onValue(subjectsRef, (snapshot) => {
+                        const subjectsData = [];
 
-                                    if (user.uid === subject.userId) {
-                                        subjectsData.push(subject);
-                                    }
-                                });
+                        if (snapshot.exists()) {
+                            snapshot.forEach((childSnapshot) => {
+                                const subject = childSnapshot.val();
 
-                                setSubjects(subjectsData);
-                                localStorage.setItem('subjects', JSON.stringify(subjectsData));
-                            }
-                        });
-                    }
-                });
+                                if (user.uid === subject.userId) {
+                                    subjectsData.push(subject);
+                                }
+                            });
 
-                return () => unsubscribe();
+                            setSubjects(subjectsData);
+                            localStorage.setItem('subjects', JSON.stringify(subjectsData));
+                        }
+                    });
+                }
             } catch (error) {
                 console.error('Error fetching subjects:', error);
             }
@@ -172,31 +139,17 @@ export default function Dashboard() {
                 <div className='containe'>
                     <div className='cards'>
                         {subjects.map((subject, i) => (
-                            <div key={i} className='card'>
-                                <div onClick={(e) => handleCardClick(e, subject.subjectID)}>
-                                    <h2>{subject.subjectID}</h2>
-                                    <h3>{subject.subjectName}</h3>
-                                    <h5>{subject.Year}</h5>
-                                    <h5>{subject.subjectRef}</h5>
-                                </div>
-                                <div className='icon-container'>
-                                    <VscError onClick={() => handleConfirmDelete(subject.subjectID)} />
-                                </div>
+                            <div key={i} className='card' onClick={() => handleCardClick(subject.subjectID)}>
+                                <h2>{subject.subjectID}</h2>
+                                <h3>{subject.subjectName}</h3>
+                                <h5>{subject.Year}</h5>
+                                <h5>{subject.subjectRef}</h5>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
-            <div className='button-container1'>
-                <button className='bottom-button1' onClick={handleClick}>
-                    Add more Subjects
-                </button>
-            </div>
-            <ConfirmationModal
-                isOpen={isModalOpen}
-                onClose={handleCloseModal}
-                onConfirm={confirmDelete}
-            />
+            
         </div>
     );
-}            
+}
