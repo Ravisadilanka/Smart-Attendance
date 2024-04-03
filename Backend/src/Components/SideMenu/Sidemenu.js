@@ -9,6 +9,7 @@ import { auth, db } from '../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { ref, get } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
+import { TbReportAnalytics } from "react-icons/tb";
 
 const Sidemenu = () => {
   const [activeLink, setActiveLink] = useState('dashboard');
@@ -109,7 +110,7 @@ const Sidemenu = () => {
         </li>
         <li className={activeLink === 'analytics' ? 'active' : ''}>
           <Link to="/analytics" onClick={() => handleLinkClick('analytics')}>
-            <span><CgProfile /></span>Analytics
+            <span><TbReportAnalytics /></span>Analytics
           </Link>
         </li>
         <li>
