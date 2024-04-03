@@ -3,6 +3,7 @@ import { db, auth } from '../../firebase';
 import { ref, get } from 'firebase/database';
 import { useNavigate, useParams } from 'react-router-dom';
 import Sidemenu from '../SideMenu/Sidemenu';
+import "./stat.css";
 
 export default function Analytics() {
   const [subjects, setSubjects] = useState([]);
@@ -103,7 +104,7 @@ export default function Analytics() {
     <div>
       <Sidemenu />
       <div>
-        <h2>Students Attendance</h2>
+        <h2 className="table-heading">Students Attendance</h2>
         <table>
           <thead>
             <tr>
