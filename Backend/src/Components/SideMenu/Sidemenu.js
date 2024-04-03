@@ -107,8 +107,8 @@ const Sidemenu = () => {
             <span><CgProfile /></span>User Profile
           </Link>
         </li>
-        <li className={activeLink === 'profile' ? 'active' : ''}>
-          <Link to="/analytics" onClick={() => handleLinkClick('profile')}>
+        <li className={activeLink === 'analytics' ? 'active' : ''}>
+          <Link to="/analytics" onClick={() => handleLinkClick('analytics')}>
             <span><CgProfile /></span>Analytics
           </Link>
         </li>
