@@ -22,7 +22,7 @@ firebase_admin.initialize_app(cred, {
 
 bucket = storage.bucket()
 
-cap = cv2.VideoCapture("http://192.168.43.77:81/stream")
+cap = cv2.VideoCapture("http://192.168.100.77:81/stream")
 cap.set(3, 640)
 cap.set(4, 480)
 
