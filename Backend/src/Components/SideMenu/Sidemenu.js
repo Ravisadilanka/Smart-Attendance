@@ -109,13 +109,8 @@ const Sidemenu = () => {
           </Link>
         </li>
         <li className={activeLink === 'analytics' ? 'active' : ''}>
-<<<<<<< HEAD
           <Link to={userData.adminId ? "/analytics" : userData.staffId ? "/analytics" : "/studentanalytics"} onClick={() => handleLinkClick('analytics')}>
-            <span><CgProfile /></span>Analytics
-=======
-          <Link to="/analytics" onClick={() => handleLinkClick('analytics')}>
             <span><TbReportAnalytics /></span>Analytics
->>>>>>> 0f7aa6ff5931ae7346b94d96582d2bdd961f0b7a
           </Link>
         </li>
         <li>
