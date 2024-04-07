@@ -108,7 +108,7 @@ const Sidemenu = () => {
           </Link>
         </li>
         <li className={activeLink === 'analytics' ? 'active' : ''}>
-          <Link to="/analytics" onClick={() => handleLinkClick('analytics')}>
+          <Link to={userData.adminId ? "/analytics" : userData.staffId ? "/analytics" : "/studentanalytics"} onClick={() => handleLinkClick('analytics')}>
             <span><CgProfile /></span>Analytics
           </Link>
         </li>
