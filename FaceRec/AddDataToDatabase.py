@@ -10,7 +10,7 @@ firebase_admin.initialize_app(cred, {
 ref = db.reference('Students')
 
 data = {
-    "3960":
+    "19APC3960":
         {
             "name": "Shashini",
             "id": "19APC3960",
@@ -18,7 +18,7 @@ data = {
             "AcademicYear": "2019/20",
             "Last_attendance_time": "2023-09-24 00:54:34"
         },
-    "4030":
+    "19APC4030":
         {
             "name": "John",
             "id": "19APC4030",
@@ -26,7 +26,7 @@ data = {
             "AcademicYear": "2019/20",
             "Last_attendance_time": "2023-09-24 01:25:25"
         },
-    "5030":
+    "19APC5030":
         {
             "name": "Raveesha",
             "id": "19APC5030",
@@ -34,7 +34,7 @@ data = {
             "AcademicYear": "2019/20",
             "Last_attendance_time": "2023-09-24 01:25:25"
         },
-    "5060":
+    "19APC5060":
         {
             "name": "Isuru",
             "id": "19APC5060",

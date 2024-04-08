@@ -1,0 +1,66 @@
+
+/* styles.css */
+
+/* Adjusted styles for the table heading */
+.table-heading {
+    margin-bottom: 30px; /* Add space between the heading and the table */
+  }
+  
+  /* Style the table container */
+  .table-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); /* Add shadow to the table container */
+    border-radius: 10px;
+    overflow: hidden; /* Ensure the shadow doesn't overflow */
+  }
+  
+  /* Style the table */
+  table {
+    width: 130%; /* Change the width of the table */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px; /* Add some border-radius to match the container */
+  }
+  
+  /* Style the table header */
+  th {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 12px 10px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  /* Style alternating row colors for better readability */
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style table cells */
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Style table cells for percentage column */
+  td:nth-child(5) {
+    text-align: center;
+  }
+  
+  /* Style table cell for present and absent columns */
+  td:nth-child(3),
+  td:nth-child(4) {
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Hover effect for table rows */
+  tr:hover {
+    background-color: #eaeaea; /* Lighter background color on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  /* Adjusted shadow on hover */
+  .table-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+  
