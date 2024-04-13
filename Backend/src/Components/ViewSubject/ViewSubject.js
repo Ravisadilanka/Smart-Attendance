@@ -75,7 +75,7 @@ const ViewSubject = () => {
                                     className="card-button1"
                                     onClick={() => handleCardClick(lecture.lectureNumber)}
                                 >
-                                    <span>Lecture Number: {lecture.lectureNumber}</span>
+                                    <span>Lecture No: {lecture.lectureNumber}</span>
                                 </div>
                             </div>
                         ))}

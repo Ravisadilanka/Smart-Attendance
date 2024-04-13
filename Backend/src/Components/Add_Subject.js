@@ -48,9 +48,11 @@ export default function AddSubject() {
   return (
     <div>
       <Sidemenu/>
+      
       <section>
         <div className="register2">
           <form id='form' className='flex flex-col' onSubmit={handleSubmit(handleAddSubject)}>
+          <div className='addasubdesign'>Add a subject</div>
             <input
               type="text"
               placeholder='Subject ID'
@@ -80,9 +82,6 @@ export default function AddSubject() {
           </form>
         </div>
       </section>
-      <div>
-        <Link to="/dashboard">Back to Dashboard</Link>
-      </div>
     </div>
   );
 }

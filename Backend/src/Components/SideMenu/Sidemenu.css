@@ -1,10 +1,12 @@
 .sidebar {
-  width: 220px;
+  width: 240px;
   background-color: #6F7B9A;
   position: absolute;
-  top: 90px;
+  top: 89.5px;
   left: 0;
+  height: calc(92.8vh - 90px); /* Adjust height to fill remaining viewport */
   transition: width 0.3s; /* Add transition for smoother resizing */
+  overflow-y: auto; /* Add overflow-y for scrolling if content exceeds height */
 }
 
 .sidebar ul {
@@ -21,8 +23,8 @@
   color: #ecf0f1;
   font-size: 16px;
   display: block;
-  padding: 10px;
-  padding-bottom: 30px;
+  padding: 20px;
+  padding-bottom: 45px;
   transition: background-color 0.3s;
 }
 
@@ -45,7 +47,8 @@
   padding: 1px 6px;
   border-radius: 50%;
   position: absolute;
-  right: 20px;
+  right: 25px;
+  bottom: 470px;
 }
 
 .notification-link {
@@ -53,14 +56,23 @@
 }
 
 .assign {
-  margin-left: -32px;
+  margin-left: -32.5px;
   margin-bottom: 30px;
+}
+
+
+.qwerty_analytics {
+  margin-left: -21.5px;
+}
+
+.qwerty_userprofile {
+  margin-left: -6.5px;
 }
 
 /* Media queries for responsiveness */
 @media (max-width: 992px) {
   .sidebar {
-      width: 180px;
+      width: 190px;
   }
 }
 
@@ -71,10 +83,13 @@
 
   .sidebar a {
       font-size: 14px;
+      padding: 15px; /* Adjust padding for smaller screens */
+      padding-bottom: 35px;
   }
 
   .notification-count {
       font-size: 8px;
+      bottom: 320px; /* Adjust based on notification position */
   }
 }
 
@@ -83,6 +98,7 @@
       width: 100%; /* Occupy full width on smaller screens */
       position: relative; /* Change position to relative */
       top: 0;
+      height: auto; /* Reset height for auto sizing */
   }
 
   .sidebar ul {
@@ -100,5 +116,8 @@
 
   .notification-count {
       right: 10px; /* Adjust position of notification count */
-  }
+
+    }
 }
+
+

@@ -4,7 +4,7 @@
     border: 1px solid #e9ecef;
     border-radius: 30px;
     background-color: #dce7ee;
-    margin-top: 53%;
+    margin-top: 43%;
   }
   
   .register span{
@@ -19,7 +19,7 @@
   
   #form >  input, .btn{
     border: 1px solid #e9ecef;
-    padding: .4em .8em;
+    padding: .2em .8em;
   }
   
   #form > input:focus{

@@ -2,13 +2,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 20%;
+  margin: 10%;
   cursor: pointer;
+  margin-left: 490px;
 }
 
 .card {
   flex: 0 0 calc(30% - 20px);
   max-width: calc(30% - 20px);
+  width: 1000px;
+  height: 150px;
+  background: #d4e1f2;
+  border-radius: 10px;
+  padding: 15px 10px;
+  transition: .3s;
+  border: 2px solid transparent;
+  font-size: 16px; 
+  position: relative;
+  color: black;
+  box-shadow: 0 4px 8px rgba(37, 36, 36, 0.1);
+  margin-bottom: 20px; 
+  margin-top: 30px;
+  
+}
+
+/*
+.card {
+  flex: 0 0 calc(20% - 20px);
+  max-width: calc(20% - 20px);
   width: 160px;
   height: 150px;
   background: #d4e1f2;
@@ -16,12 +37,15 @@
   padding: 15px 10px;
   transition: .3s;
   border: 2px solid transparent;
-  font-size: 16px; /* Adjust font size for readability */
+  font-size: 16px; 
   position: relative;
   color: black;
   box-shadow: 0 4px 8px rgba(37, 36, 36, 0.1);
-  margin-bottom: 20px; /* Add spacing between cards */
+  margin-bottom: 20px; 
+  margin-top: 30px;
 }
+*/
+
 
 .card:hover {
   border-color: #2C3268;
@@ -33,12 +57,13 @@
   max-width: 100%; /* Adjust max-width to occupy full width */
   width: 100%;
   margin: auto;
+  margin-top: -50px;
   padding: 0px 20px;
   box-sizing: border-box;
 }
 
 section {
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,6 +84,9 @@ section {
   cursor: pointer;
   font-size: 16px;
   width: 200px; /* Set button width explicitly */
+  margin-top: -70px;
+  margin-left: 4px;
+  
 }
 
 .icon-container {
@@ -77,10 +105,11 @@ section {
   }
   
   .button-container1 {
-    margin-bottom: 10px; /* Reduce margin for button container */
+    margin-bottom: 1000px; /* Reduce margin for button container */
   }
 
   .bottom-button1 {
     width: 150px; /* Reduce button width for smaller screens */
+    border-radius: 0;
   }
 }

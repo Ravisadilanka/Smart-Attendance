@@ -9,8 +9,9 @@
   background-color: #d4e1f2;
   width: 700px;
   margin-left: 180px;
-  height: 380px;
-  margin-top: 50px;
+  height: 480px;
+  margin-top: 20px;
+  max-height: 1000px;
 }
 
 .notification-title {

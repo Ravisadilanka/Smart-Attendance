@@ -135,7 +135,7 @@ export default function UserProfile() {
 
       <div className="register2">
         <div className="col-1">
-          <h1>User Profile</h1>
+          <h1 className='heading'>User Profile</h1>
           {successMessage && <p className="success">{successMessage}</p>}
             {errorMessage && <p className="error-msg">{errorMessage}</p>}
 
