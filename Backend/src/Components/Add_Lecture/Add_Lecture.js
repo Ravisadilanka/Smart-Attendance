@@ -125,9 +125,6 @@ export default function Add_Lecture() {
           </form>
         </div>
       </section>
-      <div>
-        <Link to="/dashboard">Back to Dashboard</Link>
-      </div>
-    </div>
+         </div>
   );
 }
