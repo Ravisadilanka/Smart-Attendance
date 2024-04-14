@@ -23,6 +23,7 @@ import ViewSubject from './Components/ViewSubject/ViewSubject';
 import StudentAttendance from './Components/StudentAttendance/StudentAttendance';
 import Analytics from './Components/Analytics/Analytics';
 import Stat from './Components/Stats/stat';
+import StudentAnalytics from './Components/StudentAnalytics/StudentAnalytics';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/academic_years/:academicYear" element={<ViewStudents />} />
           <Route path="/student_dashboard" element={<StudentDashboard />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/studentanalytics" element={<StudentAnalytics />} />
           <Route path={`/analytics/:subjectID`} element={<Stat />} />
         </Routes>
       </div>

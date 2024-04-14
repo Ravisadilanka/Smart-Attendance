@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-
+import Styled from '../components/Styled';
 
 import '../../src/Subject.css';
 // import Footer from '../components/Footer';
@@ -14,6 +14,7 @@ export default function
 
 <Header/>
 <Sidebar/>
+<Styled/>
 {/* <Footer/> */}
 
 
@@ -21,7 +22,7 @@ export default function
  
  <div>
    <button className='Subject-btn'>Digital Innovation</button>
-   <img class="corner-image" src=".jpg" alt="Corner Image"></img>
+   {/* <img class="corner-image" src=".jpg" alt="Corner Image"></img> */}
   
 </div>
    <button className='Subject-btn'>E-Business</button>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+// import background from '../images/dropdown.png';
 const ButtonContainer = styled.div`
   position: relative;
   display: inline-block;
@@ -7,7 +7,7 @@ const ButtonContainer = styled.div`
 
 const MyButtonStyled = styled.button`
   padding: 10px 20px;
-  background-color: #3498db;
+  background-color: #354346;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -26,7 +26,7 @@ const MyButton = () => {
   return (
     <ButtonContainer>
       <MyButtonStyled>Click me</MyButtonStyled>
-      <CornerImage src="your-image-url.jpg" alt="Corner Image" />
+      <CornerImage src="../images/dropdown.png" alt="Corner Image" />
     </ButtonContainer>
   );
 };
