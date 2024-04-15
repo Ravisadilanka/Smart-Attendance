@@ -107,20 +107,22 @@ const Sidemenu = () => {
           <Link className="qwerty_userprofile" to="/profile" onClick={() => handleLinkClick('profile')}>
             <span><CgProfile /></span>User Profile
           </Link>
+          </li>
+        <li className={activeLink === 'profile' ? 'active' : ''}>
+          <Link to="/profile" onClick={() => handleLinkClick('profile')}>
+            <span><CgProfile /></span> User Profile
+          </Link>
         </li>
         <li className={activeLink === 'analytics' ? 'active' : ''}>
-<<<<<<< HEAD
-          <Link className="qwerty_analytics" to="/analytics" onClick={() => handleLinkClick('analytics')}>
-=======
-          <Link to={userData.adminId ? "/analytics" : userData.staffId ? "/analytics" : "/studentanalytics"} onClick={() => handleLinkClick('analytics')}>
->>>>>>> 48bc262aeebc63596d569cf343e7c10722e23de0
-            <span><TbReportAnalytics /></span>Analytics
+          <Link to="/analytics" onClick={() => handleLinkClick('analytics')}>
+            <span><TbReportAnalytics /></span> Analytics
           </Link>
         </li>
         <li>
-          <Link className='assign' onClick={handleLogout}><span><IoIosLogOut /></span>Logout </Link>
+          <Link className='assign' onClick={handleLogout}><span><IoIosLogOut /></span> Logout </Link>
         </li>
       </ul>
+
     </div>
   );
 };
